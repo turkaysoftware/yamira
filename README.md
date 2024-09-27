@@ -4,7 +4,7 @@
 
 Programmed with C# and .NET Framework only. No external libraries, no dependencies.
 
-![Yamira UI](https://github.com/user-attachments/assets/80d1ebf9-6f58-4e64-b5c5-c0b4b421e4ab)
+![Yamira UI](https://github.com/user-attachments/assets/15394cd5-333d-4f72-9857-287889cc88cd)
 
 # Download Yamira
 
