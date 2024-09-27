@@ -254,7 +254,7 @@ namespace Yamira{
         }
         // YAMIRA LOAD
         // ======================================================================================================
-        private void Yamira_Load(object sender, EventArgs e){ 
+        private void Yamira_Load(object sender, EventArgs e){
             Text = TS_SoftwareVersion.TS_SofwareVersion(0, ts_version_mode);
             HeaderMenu.Cursor = Cursors.Hand;
             //

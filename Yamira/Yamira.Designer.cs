@@ -277,8 +277,7 @@
             // 
             // BtnFormatNTFS
             // 
-            this.BtnFormatNTFS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnFormatNTFS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnFormatNTFS.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtnFormatNTFS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnFormatNTFS.FlatAppearance.BorderSize = 0;
@@ -294,8 +293,7 @@
             // 
             // BtnDisabledProtect
             // 
-            this.BtnDisabledProtect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDisabledProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnDisabledProtect.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtnDisabledProtect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnDisabledProtect.FlatAppearance.BorderSize = 0;
@@ -311,8 +309,7 @@
             // 
             // BtnActiveProtect
             // 
-            this.BtnActiveProtect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnActiveProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnActiveProtect.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtnActiveProtect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnActiveProtect.FlatAppearance.BorderSize = 0;
@@ -336,7 +333,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.HeaderMenu;
-            this.MinimumSize = new System.Drawing.Size(1000, 630);
+            this.MinimumSize = new System.Drawing.Size(1024, 640);
             this.Name = "Yamira";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Yamira";

@@ -38,15 +38,20 @@ namespace Yamira{
                 About_WebsiteBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
                 About_WebsiteBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
                 //
-                About_GitHubBtn.ForeColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "DynamicThemeActiveBtnBGColor");
-                About_GitHubBtn.BackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
-                About_GitHubBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
-                About_GitHubBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
-                //
                 About_XBtn.ForeColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "DynamicThemeActiveBtnBGColor");
                 About_XBtn.BackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
                 About_XBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
                 About_XBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
+                //
+                About_InstagramBtn.ForeColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "DynamicThemeActiveBtnBGColor");
+                About_InstagramBtn.BackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
+                About_InstagramBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
+                About_InstagramBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
+                //
+                About_GitHubBtn.ForeColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "DynamicThemeActiveBtnBGColor");
+                About_GitHubBtn.BackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
+                About_GitHubBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
+                About_GitHubBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(Yamira.theme), "ContentLabelRightColor");
                 // ======================================================================================================
                 TSGetLangs software_lang = new TSGetLangs(Yamira.lang_path);
                 TS_VersionEngine glow_version = new TS_VersionEngine();
@@ -55,11 +60,11 @@ namespace Yamira{
                 About_L1.Text = glow_version.TS_SofwareVersion(0, Yamira.ts_version_mode);
                 About_L2.Text = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_copyright").Trim())), "\u00a9", DateTime.Now.Year, Application.CompanyName);
                 About_WebsiteBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_website_page").Trim()));
-                About_GitHubBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_github_page").Trim()));
                 About_XBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_twitter_page").Trim()));
+                About_InstagramBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_instagram_page").Trim()));
+                About_GitHubBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_github_page").Trim()));
             }catch (Exception){ }
         }
-
         // WEBSITE LINK
         // ======================================================================================================
         private void About_WebsiteBtn_Click(object sender, EventArgs e){
@@ -74,11 +79,18 @@ namespace Yamira{
                 Process.Start(TS_LinkSystem.twitter_link);
             }catch (Exception){ }
         }
+        // INSTAGRAM LINK
+        // ======================================================================================================
+        private void About_InstagramBtn_Click(object sender, EventArgs e){
+            try{
+                Process.Start(TS_LinkSystem.instagram_link);
+            }catch (Exception){ }
+        }
         // GITHUN LINK
         // ======================================================================================================
         private void About_GitHubBtn_Click(object sender, EventArgs e){
             try{
-                Process.Start(TS_LinkSystem.github_link + "/yamira");
+                Process.Start(TS_LinkSystem.github_link);
             }catch (Exception){ }
         }
     }
