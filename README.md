@@ -16,7 +16,23 @@ Download: [Yamira Latest Version](https://github.com/turkaysoftware/yamira/relea
 
 # How to use Yamira?
 
-**Extract the entire contents of the Alpis ZIP file** you downloaded from the **[Release](https://github.com/turkaysoftware/yamira/releases/latest)** section into a folder. Just run *Yamira_x64.exe* if you have an **x64 processor** or *Yamira_arm64.exe* if you have an **ARM processor**!
+After downloading the Yamira application, you will find two options: **Yamira_x64.exe** and **Yamira_arm64.exe**. Which file to choose depends on your computer’s processor architecture. Here’s a guide to help you decide which version is right for you:
+
+#### 1. Yamira_x64.exe
+- **Yamira_x64.exe** is designed for computers with an x64 (64-bit) processor architecture.
+- If you’re using a standard Windows PC or laptop, you likely need the x64 version.
+- Most devices with Intel or AMD processors use the x64 architecture.
+
+#### 2. Yamira_arm64.exe
+- **Yamira_arm64.exe** is specifically developed for devices with an ARM64 architecture.
+- It’s suitable for Windows devices that use **ARM processors** (such as some Surface models).
+- ARM architecture is commonly found in devices that prioritize lower power consumption and portability.
+
+#### Usage Instructions
+1. **After downloading the ZIP file, make sure to extract all files from the ZIP**. The Yamira application is a portable software, so it doesn’t require installation, but all files must be in the same folder for it to run correctly.
+2. Once extracted, run the appropriate file for your device (**Yamira_x64.exe** or **Yamira_arm64.exe**) to start using the application immediately.
+
+With these instructions, you can download and use the correct version of Yamira for your device. If you need further assistance, please feel free to reach out!
 
 # Supported Languages
 
