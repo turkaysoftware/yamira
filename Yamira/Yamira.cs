@@ -36,10 +36,6 @@ namespace Yamira{
         // ======================================================================================================
         public static string lang, lang_path, default_create_folder = "TSProtectionSystem";
         public static int theme, initial_status;
-        // SOFTWARE VERSION - MEDIA LINK SYSTEM
-        // ======================================================================================================
-        static TS_VersionEngine TS_SoftwareVersion = new TS_VersionEngine();
-        static TS_LinkSystem TS_LinkSystem = new TS_LinkSystem();
         // UI COLORS
         // ======================================================================================================
         static List<Color> header_colors = new List<Color>() { Color.Transparent, Color.Transparent };
@@ -143,7 +139,7 @@ namespace Yamira{
         // YAMIRA LOAD
         // ======================================================================================================
         private void Yamira_Load(object sender, EventArgs e){
-            Text = TS_SoftwareVersion.TS_SofwareVersion(0, Program.ts_version_mode);
+            Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
             HeaderMenu.Cursor = Cursors.Hand;
             //
             RunSoftwareEngine();
@@ -156,7 +152,7 @@ namespace Yamira{
         private void BtnActiveProtect_Click(object sender, EventArgs e){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
             if (DataMainTable.SelectedRows.Count == 0){
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_start_info")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_start_info")));
                 return;
             }
             //
@@ -172,7 +168,7 @@ namespace Yamira{
             if (!HasWritePermission(rootPath)){
                 if (driveInfo.DriveFormat == "NTFS"){
                     string firewallFolderPath = Path.Combine(rootPath, default_create_folder);
-                    DialogResult check_open_protect = MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_on_info")), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult check_open_protect = TS_MessageBoxEngine.TS_MessageBox(this, 4, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_on_info")));
                     if (check_open_protect == DialogResult.Yes){
                         try{
                             if (Directory.Exists(rootPath)){
@@ -185,23 +181,23 @@ namespace Yamira{
                                 TS_USBProtect(firewallFolderPath, true); // Firewall folder write on
                                 LoadUSBDrives();
                                 //
-                                DialogResult successAfterOpen = MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_success")), string.Format("{0} ({1})", rootPath, deviceName), "\n\n", firewallFolderPath, "\n\n"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                DialogResult successAfterOpen = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_success")), string.Format("{0} ({1})", rootPath, deviceName), "\n\n", firewallFolderPath, "\n\n"));
                                 if (successAfterOpen == DialogResult.Yes){
                                     Process.Start(firewallFolderPath);
                                 }
                             }else{
-                                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_root_directory_not_null")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                TS_MessageBoxEngine.TS_MessageBox(this, 3, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_root_directory_not_null")));
                             }
                         }catch (Exception ex){
                             LoadUSBDrives();
-                            MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_default_error")), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_default_error")), ex.Message));
                         }
                     }
                 }else{
-                    MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_not_ntfs_file_system")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_not_ntfs_file_system")));
                 }
             }else{
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_on")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_on")));
             } 
         }
         // BTN DISABLED PROTECT
@@ -209,7 +205,7 @@ namespace Yamira{
         private void BtnDisabledProtect_Click(object sender, EventArgs e){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
             if (DataMainTable.SelectedRows.Count == 0){
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_start_info")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_start_info")));
                 return;
             }
             //
@@ -224,7 +220,7 @@ namespace Yamira{
             //
             if (HasWritePermission(rootPath)){
                 string firewallFolderPath = Path.Combine(rootPath, default_create_folder);
-                DialogResult check_disabled_protect = MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_off_info")), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult check_disabled_protect = TS_MessageBoxEngine.TS_MessageBox(this, 4, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_off_info")));
                 if (check_disabled_protect == DialogResult.Yes){
                     try{
                         if (Directory.Exists(rootPath)){
@@ -232,17 +228,18 @@ namespace Yamira{
                             TS_USBProtect(rootPath, true); // Revoke write permission to root directory
                             TS_USBProtect(firewallFolderPath, true); // Grant write permission to the Firewall folder
                             LoadUSBDrives();
-                            MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_disabled_success")), rootPath, deviceName), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }else{
-                            MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_root_directory_not_null")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_disabled_success")), rootPath, deviceName));
+                        }
+                        else{
+                            TS_MessageBoxEngine.TS_MessageBox(this, 3, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_root_directory_not_null")));
                         }
                     }catch (Exception ex){
                         LoadUSBDrives();
-                        MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_default_error")), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_default_error")), ex.Message));
                     }
                 }
             }else{
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_off")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_protect_off")));
             }   
         }
         // TS USB PROTECT ALGORITHM
@@ -270,7 +267,7 @@ namespace Yamira{
         private void BtnFormatNTFS_Click(object sender, EventArgs e){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
             if (DataMainTable.SelectedRows.Count == 0){
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_start_info")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_process_start_info")));
                 return;
             }
             //
@@ -280,7 +277,7 @@ namespace Yamira{
                 DriveInfo driveInfo = new DriveInfo(rootPath);
                 // Check file system
                 if (driveInfo.DriveFormat != "NTFS"){
-                    DialogResult result = MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_warning")), "\n\n", "\n\n"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult result = TS_MessageBoxEngine.TS_MessageBox(this, 6, string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_warning")), "\n\n", "\n\n"));
                     if (result == DialogResult.Yes){
                         try{
                             string userInput = Interaction.InputBox(
@@ -296,21 +293,21 @@ namespace Yamira{
                                 //
                                 if (!containsSpecialCharacters) {
                                     // Formatting process
-                                    Text = TS_SoftwareVersion.TS_SofwareVersion(0, Program.ts_version_mode) + " - " + TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_format_title"));
+                                    Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode) + " - " + TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_format_title"));
                                     Task formatNtfs = Task.Run(() => FormatDrive(driveInfo.RootDirectory.ToString(), TSFormatTurkishLangType(userInput.Trim())));
                                 }else{
-                                    MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_info")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_info")));
                                 }
                             }else{
-                                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_new_usb_name_null")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_new_usb_name_null")));
                             }
                         }catch (Exception){ }
                     }
                 }else{
-                    MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_not_ntfs_file_system_not")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_not_ntfs_file_system_not")));
                 }
             }else{
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_root_directory_not_null")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TS_MessageBoxEngine.TS_MessageBox(this, 3, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_root_directory_not_null")));
             }
         }
         // NTFS FORMAT DRIVE ALGORITHM
@@ -343,22 +340,22 @@ namespace Yamira{
                         string error = errorReader.ReadToEnd();
                         process.WaitForExit();
                         //
-                        Text = TS_SoftwareVersion.TS_SofwareVersion(0, Program.ts_version_mode);
+                        Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
                         LoadUSBDrives();
                         //
                         if (process.ExitCode == 0){
-                            MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_format_success")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_format_success")));
                         }else{
-                            MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_format_error")), error), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_ntfs_format_error")), error));
                         }
                     }
                 }
                 // Clear temporary file
                 File.Delete(scriptFilePath);
             }catch (Exception ex){
-                Text = TS_SoftwareVersion.TS_SofwareVersion(0, Program.ts_version_mode);
+                Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
                 LoadUSBDrives();
-                MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_default_error")), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_default_error")), ex.Message));
             }
         }
         public static string TSFormatTurkishLangType(string input){
@@ -537,8 +534,8 @@ namespace Yamira{
             }catch (Exception){ }
             // LANG CHANGE NOTIFICATION
             TSGetLangs software_lang = new TSGetLangs(lang_path);
-            DialogResult lang_change_message = MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("LangChange", "lang_change_notification")), "\n\n", "\n\n"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (lang_change_message == DialogResult.Yes) { Application.Restart(); }
+            DialogResult lang_change_message = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("LangChange", "lang_change_notification")), "\n\n", "\n\n"));
+            if (lang_change_message == DialogResult.Yes){ Application.Restart(); }
         }
         private void lang_engine(string lang_type, string lang_code){
             try{
@@ -629,24 +626,26 @@ namespace Yamira{
             software_update_check(1);
         }
         public bool IsNetworkCheck(){
-            Ping ping = new Ping();
+            Ping check_ping = new Ping();
             try{
-                PingReply reply = ping.Send("www.google.com");
-                if (reply.Status == IPStatus.Success){
+                PingReply check_ping_reply = check_ping.Send("www.google.com");
+                if (check_ping_reply.Status == IPStatus.Success){
                     return true;
                 }
             }catch (PingException){ }
             return false;
         }
         public void software_update_check(int _check_update_ui){
-            if (!IsNetworkCheck()){
-                return;
-            }
-            using (WebClient webClient = new WebClient()){
-                try{
-                    TSGetLangs software_lang = new TSGetLangs(lang_path);
-                    //
-                    string client_version = TS_SoftwareVersion.TS_SofwareVersion(2, Program.ts_version_mode).Trim();
+            try{
+                TSGetLangs software_lang = new TSGetLangs(lang_path);
+                if (!IsNetworkCheck()){
+                    if (_check_update_ui == 1){
+                        TS_MessageBoxEngine.TS_MessageBox(this, 2, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_not_connection")), "\n\n"), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
+                    }
+                    return;
+                }
+                using (WebClient webClient = new WebClient()){
+                    string client_version = TS_VersionEngine.TS_SofwareVersion(2, Program.ts_version_mode).Trim();
                     int client_num_version = Convert.ToInt32(client_version.Replace(".", string.Empty));
                     //
                     string[] version_content = webClient.DownloadString(TS_LinkSystem.github_link_lt).Split('=');
@@ -655,16 +654,21 @@ namespace Yamira{
                     //
                     if (client_num_version < last_num_version){
                         // Update available
-                        string message = string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_message")), Application.ProductName, "\n\n", client_version, "\n", last_version, "\n\n");
-                        DialogResult info_update = MessageBox.Show(message, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult info_update = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_available")), Application.ProductName, "\n\n", client_version, "\n", last_version, "\n\n"), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
                         if (info_update == DialogResult.Yes){
-                            Process.Start(TS_LinkSystem.github_link_lr);
+                            Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link_lr){ UseShellExecute = true });
                         }
                     }else if (_check_update_ui == 1 && client_num_version == last_num_version){
                         // No update available
-                        MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_no_update")), Application.ProductName, "\n", client_version), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_not_available")), Application.ProductName, "\n", client_version), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
+                    }else if (_check_update_ui == 1 && client_num_version > last_num_version){
+                        // Access before public use
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_newer")), "\n\n", string.Format("v{0}", client_version)), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
                     }
-                }catch (WebException){ }
+                }
+            }catch (Exception ex){
+                TSGetLangs software_lang = new TSGetLangs(lang_path);
+                TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_error")), "\n\n", ex.Message), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
             }
         }
         // YAMIRA ABOUT
@@ -682,7 +686,7 @@ namespace Yamira{
                         Application.OpenForms[yamira_about_name].WindowState = FormWindowState.Normal;
                     }
                     Application.OpenForms[yamira_about_name].Activate();
-                    MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_about"))), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_about"))));
                 }
             }catch (Exception){ }
         }
