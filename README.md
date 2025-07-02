@@ -1,7 +1,5 @@
 # Yamira - USB Drive Protection Software
 
->_**Note:** We are releasing the final Yamira update of 2024. Thank you for your continued support, and we are excited to announce that new versions will be available starting from the second quarter of 2025._
-
 **Yamira** is a **USB drive protection software** developed by **Eray Türkay**. **Protects your USB storage devices** against malware. In particular, it provides **effective protection against hiding/deleting your personal files** as soon as you plug your USB storage devices into the computer.
 
 Programmed with C# and .NET Framework only. No external libraries, no dependencies.
@@ -63,3 +61,19 @@ With these instructions, you can download and use the correct version of Yamira 
 | OS: | Windows 10 x64 | Windows 10 22H2 x64|
 | RAM: | 50 MB Free RAM | 75 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
+
+# Shortcut Key Layouts
+
+| Main Features | Key |
+| -- | :--: |
+| **Theme:** Light | F1 |
+| **Theme:** Dark | F2 |
+| **Start:** Windowed | F3 |
+| **Start:** Full Screen | F4 |
+| **Refresh** | CTRL + R |
+
+| Extras | Key |
+| -- | :--: |
+| **Check Update** | F11 |
+| **About** | F12 |
+| **TS Wizard** | CTRL + Shift + S |
