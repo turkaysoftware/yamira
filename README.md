@@ -1,5 +1,13 @@
 # Yamira - USB Drive Protection Software
 
+Hi there! I'm an open-source developer doing my best to contribute and build tools that (hopefully) make your life a bit easier. If you’ve found my work helpful or interesting, consider buying me a coffee to show your support! 💛
+
+Every little bit helps—it keeps me motivated and gives me more time to improve existing projects and create new ones. Thanks a ton! 🙌
+
+👉 [Buy Me a Coffee - @turkaysoftware](https://buymeacoffee.com/turkaysoftware)
+
+![Buy Me a Coffee - @turkaysoftware](https://github.com/user-attachments/assets/49bd55a0-254c-4848-9b43-2c243b018150)
+
 **Yamira** is a **USB drive protection software** developed by **Eray Türkay**. **Protects your USB storage devices** against malware. In particular, it provides **effective protection against hiding/deleting your personal files** as soon as you plug your USB storage devices into the computer.
 
 Programmed with C# and .NET Framework only. No external libraries, no dependencies.
