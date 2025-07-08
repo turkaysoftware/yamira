@@ -1,10 +1,11 @@
 ﻿using System;
-using System.IO;
-using System.Text;
-using System.Drawing;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Yamira{
     internal class TSModules{
@@ -18,7 +19,11 @@ namespace Yamira{
             github_link = "https://github.com/turkaysoftware",
             //
             github_link_lt = "https://raw.githubusercontent.com/turkaysoftware/yamira/main/Yamira/SoftwareVersion.txt",
-            github_link_lr = "https://github.com/turkaysoftware/yamira/releases/latest";
+            github_link_lr = "https://github.com/turkaysoftware/yamira/releases/latest",
+            //
+            ts_wizard = "https://www.turkaysoftware.com/ts-wizard",
+            //
+            ts_bmac = "https://buymeacoffee.com/turkaysoftware";
         }
         // VERSIONS
         // ======================================================================================================
@@ -222,6 +227,20 @@ namespace Yamira{
                 bytes /= 1024;
             }
             return Math.Round(bytes, 2);
+        }
+        // INTERNET CONNECTION STATUS
+        // ======================================================================================================
+        public static bool IsNetworkCheck(){
+            try{
+                HttpWebRequest server_request = (HttpWebRequest)WebRequest.Create("http://clients3.google.com/generate_204");
+                server_request.KeepAlive = false;
+                server_request.Timeout = 2500;
+                using (var server_response = (HttpWebResponse)server_request.GetResponse()){
+                    return server_response.StatusCode == HttpStatusCode.NoContent;
+                }
+            }catch{
+                return false;
+            }
         }
         // TITLE BAR SETTINGS DWM API
         // ======================================================================================================

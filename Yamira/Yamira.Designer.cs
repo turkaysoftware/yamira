@@ -47,6 +47,7 @@
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkforUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Panel_BG = new System.Windows.Forms.Panel();
@@ -56,6 +57,7 @@
             this.BtnFormatNTFS = new System.Windows.Forms.Button();
             this.BtnDisabledProtect = new System.Windows.Forms.Button();
             this.BtnActiveProtect = new System.Windows.Forms.Button();
+            this.bmacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HeaderMenu.SuspendLayout();
             this.Panel_BG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataMainTable)).BeginInit();
@@ -67,6 +69,8 @@
             this.HeaderMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
             this.refreshToolStripMenuItem,
+            this.tSWizardToolStripMenuItem,
+            this.bmacToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.HeaderMenu.Location = new System.Drawing.Point(0, 0);
             this.HeaderMenu.Name = "HeaderMenu";
@@ -92,7 +96,7 @@
             this.lightThemeToolStripMenuItem,
             this.darkThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightThemeToolStripMenuItem
@@ -117,7 +121,7 @@
             this.englishToolStripMenuItem,
             this.turkishToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // englishToolStripMenuItem
@@ -140,7 +144,7 @@
             this.windowedToolStripMenuItem,
             this.fullScreenToolStripMenuItem});
             this.initialViewToolStripMenuItem.Name = "initialViewToolStripMenuItem";
-            this.initialViewToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.initialViewToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.initialViewToolStripMenuItem.Text = "Initial";
             // 
             // windowedToolStripMenuItem
@@ -162,8 +166,8 @@
             // checkforUpdatesToolStripMenuItem
             // 
             this.checkforUpdatesToolStripMenuItem.Name = "checkforUpdatesToolStripMenuItem";
-            this.checkforUpdatesToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.checkforUpdatesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.checkforUpdatesToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
+            this.checkforUpdatesToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.checkforUpdatesToolStripMenuItem.Text = "Check for Updates";
             this.checkforUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkforUpdatesToolStripMenuItem_Click);
             // 
@@ -175,6 +179,16 @@
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // tSWizardToolStripMenuItem
+            // 
+            this.tSWizardToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tSWizardToolStripMenuItem.Name = "tSWizardToolStripMenuItem";
+            this.tSWizardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.tSWizardToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.tSWizardToolStripMenuItem.Text = "TSWizard";
+            this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.tSWizardToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -323,6 +337,16 @@
             this.BtnActiveProtect.UseVisualStyleBackColor = false;
             this.BtnActiveProtect.Click += new System.EventHandler(this.BtnActiveProtect_Click);
             // 
+            // bmacToolStripMenuItem
+            // 
+            this.bmacToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bmacToolStripMenuItem.Name = "bmacToolStripMenuItem";
+            this.bmacToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.bmacToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.bmacToolStripMenuItem.Text = "Bmac";
+            this.bmacToolStripMenuItem.Click += new System.EventHandler(this.bmacToolStripMenuItem_Click);
+            // 
             // Yamira
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -373,6 +397,8 @@
         private System.Windows.Forms.Button BtnFormatNTFS;
         private System.Windows.Forms.Label Label_NotUSB;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tSWizardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bmacToolStripMenuItem;
     }
 }
 

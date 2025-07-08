@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>24.12.0.%2a</ApplicationVersion>
+    <ApplicationVersion>25.07.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -176,6 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="YamiraLogo.ico" />
+    <None Include="yamira_images\yamira_interface\dark_theme\header_bmac_dark.png" />
+    <None Include="yamira_images\yamira_interface\light_theme\header_bmac_light.png" />
+    <None Include="yamira_images\yamira_interface\dark_theme\header_tswizard_dark.png" />
+    <None Include="yamira_images\yamira_interface\light_theme\header_tswizard_light.png" />
     <None Include="yamira_images\ts_preloader\ts_preloader.jpg" />
     <None Include="yamira_images\yamira_interface\dark_theme\header_update_dark.png" />
     <None Include="yamira_images\yamira_interface\dark_theme\header_theme_dark.png" />

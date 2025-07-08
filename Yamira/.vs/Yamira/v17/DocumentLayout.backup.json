@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Main Files\\Yamira\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E67EA703-EA91-47CF-9DDA-9151E9787F18}|Yamira.csproj|E:\\Main Files\\Yamira\\yamira.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E67EA703-EA91-47CF-9DDA-9151E9787F18}|Yamira.csproj|solutionrelative:yamira.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E67EA703-EA91-47CF-9DDA-9151E9787F18}|Yamira.csproj|e:\\main files\\yamira\\yamira.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E67EA703-EA91-47CF-9DDA-9151E9787F18}|Yamira.csproj|solutionrelative:yamira.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Yamira.cs [Tasar\u0131m]",
+              "DocumentMoniker": "E:\\Main Files\\Yamira\\Yamira.cs",
+              "RelativeDocumentMoniker": "Yamira.cs",
+              "ToolTip": "E:\\Main Files\\Yamira\\Yamira.cs [Tasar\u0131m]",
+              "RelativeToolTip": "Yamira.cs [Tasar\u0131m]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T22:11:52.076Z",
+              "EditorCaption": " [Tasar\u0131m]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Yamira.cs",
+              "DocumentMoniker": "E:\\Main Files\\Yamira\\Yamira.cs",
+              "RelativeDocumentMoniker": "Yamira.cs",
+              "ToolTip": "E:\\Main Files\\Yamira\\Yamira.cs",
+              "RelativeToolTip": "Yamira.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T21:37:59.627Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
