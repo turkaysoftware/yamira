@@ -48,20 +48,22 @@
             this.checkforUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tSWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bmacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Panel_BG = new System.Windows.Forms.Panel();
             this.DataMainTable = new System.Windows.Forms.DataGridView();
             this.Panel_Right = new System.Windows.Forms.Panel();
-            this.Label_NotUSB = new System.Windows.Forms.Label();
-            this.BtnFormatNTFS = new System.Windows.Forms.Button();
-            this.BtnDisabledProtect = new System.Windows.Forms.Button();
+            this.FLP_Container = new System.Windows.Forms.FlowLayoutPanel();
             this.BtnActiveProtect = new System.Windows.Forms.Button();
-            this.bmacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnDisabledProtect = new System.Windows.Forms.Button();
+            this.BtnFormatNTFS = new System.Windows.Forms.Button();
+            this.Label_NotUSB = new System.Windows.Forms.Label();
             this.HeaderMenu.SuspendLayout();
             this.Panel_BG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataMainTable)).BeginInit();
             this.Panel_Right.SuspendLayout();
+            this.FLP_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // HeaderMenu
@@ -190,6 +192,16 @@
             this.tSWizardToolStripMenuItem.Text = "TSWizard";
             this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.tSWizardToolStripMenuItem_Click);
             // 
+            // bmacToolStripMenuItem
+            // 
+            this.bmacToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bmacToolStripMenuItem.Name = "bmacToolStripMenuItem";
+            this.bmacToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.bmacToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.bmacToolStripMenuItem.Text = "Bmac";
+            this.bmacToolStripMenuItem.Click += new System.EventHandler(this.bmacToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -264,10 +276,8 @@
             // Panel_Right
             // 
             this.Panel_Right.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Panel_Right.Controls.Add(this.FLP_Container);
             this.Panel_Right.Controls.Add(this.Label_NotUSB);
-            this.Panel_Right.Controls.Add(this.BtnFormatNTFS);
-            this.Panel_Right.Controls.Add(this.BtnDisabledProtect);
-            this.Panel_Right.Controls.Add(this.BtnActiveProtect);
             this.Panel_Right.Dock = System.Windows.Forms.DockStyle.Right;
             this.Panel_Right.Location = new System.Drawing.Point(778, 5);
             this.Panel_Right.Name = "Panel_Right";
@@ -275,51 +285,17 @@
             this.Panel_Right.Size = new System.Drawing.Size(225, 567);
             this.Panel_Right.TabIndex = 1;
             // 
-            // Label_NotUSB
+            // FLP_Container
             // 
-            this.Label_NotUSB.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Label_NotUSB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Label_NotUSB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.Label_NotUSB.Location = new System.Drawing.Point(5, 437);
-            this.Label_NotUSB.Name = "Label_NotUSB";
-            this.Label_NotUSB.Padding = new System.Windows.Forms.Padding(5);
-            this.Label_NotUSB.Size = new System.Drawing.Size(220, 130);
-            this.Label_NotUSB.TabIndex = 2;
-            this.Label_NotUSB.Text = "Herhangi bir USB depolama aygıtı tespit edilemedi.";
-            this.Label_NotUSB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Label_NotUSB.Visible = false;
-            // 
-            // BtnFormatNTFS
-            // 
-            this.BtnFormatNTFS.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnFormatNTFS.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnFormatNTFS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnFormatNTFS.FlatAppearance.BorderSize = 0;
-            this.BtnFormatNTFS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnFormatNTFS.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.BtnFormatNTFS.Location = new System.Drawing.Point(5, 83);
-            this.BtnFormatNTFS.Name = "BtnFormatNTFS";
-            this.BtnFormatNTFS.Size = new System.Drawing.Size(220, 35);
-            this.BtnFormatNTFS.TabIndex = 2;
-            this.BtnFormatNTFS.Text = "NTFS Formatla";
-            this.BtnFormatNTFS.UseVisualStyleBackColor = false;
-            this.BtnFormatNTFS.Click += new System.EventHandler(this.BtnFormatNTFS_Click);
-            // 
-            // BtnDisabledProtect
-            // 
-            this.BtnDisabledProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnDisabledProtect.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnDisabledProtect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnDisabledProtect.FlatAppearance.BorderSize = 0;
-            this.BtnDisabledProtect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDisabledProtect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.BtnDisabledProtect.Location = new System.Drawing.Point(5, 42);
-            this.BtnDisabledProtect.Name = "BtnDisabledProtect";
-            this.BtnDisabledProtect.Size = new System.Drawing.Size(220, 35);
-            this.BtnDisabledProtect.TabIndex = 1;
-            this.BtnDisabledProtect.Text = "Korumayı Kaldır";
-            this.BtnDisabledProtect.UseVisualStyleBackColor = false;
-            this.BtnDisabledProtect.Click += new System.EventHandler(this.BtnDisabledProtect_Click);
+            this.FLP_Container.AutoSize = true;
+            this.FLP_Container.Controls.Add(this.BtnActiveProtect);
+            this.FLP_Container.Controls.Add(this.BtnDisabledProtect);
+            this.FLP_Container.Controls.Add(this.BtnFormatNTFS);
+            this.FLP_Container.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FLP_Container.Location = new System.Drawing.Point(5, 0);
+            this.FLP_Container.Name = "FLP_Container";
+            this.FLP_Container.Size = new System.Drawing.Size(220, 119);
+            this.FLP_Container.TabIndex = 0;
             // 
             // BtnActiveProtect
             // 
@@ -329,23 +305,76 @@
             this.BtnActiveProtect.FlatAppearance.BorderSize = 0;
             this.BtnActiveProtect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActiveProtect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.BtnActiveProtect.Location = new System.Drawing.Point(5, 1);
+            this.BtnActiveProtect.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnActiveProtect.Location = new System.Drawing.Point(0, 0);
+            this.BtnActiveProtect.Margin = new System.Windows.Forms.Padding(0);
             this.BtnActiveProtect.Name = "BtnActiveProtect";
+            this.BtnActiveProtect.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.BtnActiveProtect.Size = new System.Drawing.Size(220, 35);
             this.BtnActiveProtect.TabIndex = 0;
             this.BtnActiveProtect.Text = "Korumayı Aç";
+            this.BtnActiveProtect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnActiveProtect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnActiveProtect.UseVisualStyleBackColor = false;
             this.BtnActiveProtect.Click += new System.EventHandler(this.BtnActiveProtect_Click);
             // 
-            // bmacToolStripMenuItem
+            // BtnDisabledProtect
             // 
-            this.bmacToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bmacToolStripMenuItem.Name = "bmacToolStripMenuItem";
-            this.bmacToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D)));
-            this.bmacToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.bmacToolStripMenuItem.Text = "Bmac";
-            this.bmacToolStripMenuItem.Click += new System.EventHandler(this.bmacToolStripMenuItem_Click);
+            this.BtnDisabledProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnDisabledProtect.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BtnDisabledProtect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDisabledProtect.FlatAppearance.BorderSize = 0;
+            this.BtnDisabledProtect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDisabledProtect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BtnDisabledProtect.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDisabledProtect.Location = new System.Drawing.Point(0, 42);
+            this.BtnDisabledProtect.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.BtnDisabledProtect.Name = "BtnDisabledProtect";
+            this.BtnDisabledProtect.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BtnDisabledProtect.Size = new System.Drawing.Size(220, 35);
+            this.BtnDisabledProtect.TabIndex = 1;
+            this.BtnDisabledProtect.Text = "Korumayı Kaldır";
+            this.BtnDisabledProtect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnDisabledProtect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnDisabledProtect.UseVisualStyleBackColor = false;
+            this.BtnDisabledProtect.Click += new System.EventHandler(this.BtnDisabledProtect_Click);
+            // 
+            // BtnFormatNTFS
+            // 
+            this.BtnFormatNTFS.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnFormatNTFS.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BtnFormatNTFS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnFormatNTFS.FlatAppearance.BorderSize = 0;
+            this.BtnFormatNTFS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnFormatNTFS.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BtnFormatNTFS.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnFormatNTFS.Location = new System.Drawing.Point(0, 84);
+            this.BtnFormatNTFS.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.BtnFormatNTFS.Name = "BtnFormatNTFS";
+            this.BtnFormatNTFS.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BtnFormatNTFS.Size = new System.Drawing.Size(220, 35);
+            this.BtnFormatNTFS.TabIndex = 2;
+            this.BtnFormatNTFS.Text = "NTFS Formatla";
+            this.BtnFormatNTFS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnFormatNTFS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnFormatNTFS.UseVisualStyleBackColor = false;
+            this.BtnFormatNTFS.Click += new System.EventHandler(this.BtnFormatNTFS_Click);
+            // 
+            // Label_NotUSB
+            // 
+            this.Label_NotUSB.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Label_NotUSB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Label_NotUSB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Label_NotUSB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Label_NotUSB.Location = new System.Drawing.Point(5, 432);
+            this.Label_NotUSB.Margin = new System.Windows.Forms.Padding(3);
+            this.Label_NotUSB.Name = "Label_NotUSB";
+            this.Label_NotUSB.Padding = new System.Windows.Forms.Padding(5);
+            this.Label_NotUSB.Size = new System.Drawing.Size(220, 135);
+            this.Label_NotUSB.TabIndex = 1;
+            this.Label_NotUSB.Text = "Herhangi bir USB depolama aygıtı tespit edilemedi.";
+            this.Label_NotUSB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label_NotUSB.Visible = false;
             // 
             // Yamira
             // 
@@ -368,6 +397,8 @@
             this.Panel_BG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataMainTable)).EndInit();
             this.Panel_Right.ResumeLayout(false);
+            this.Panel_Right.PerformLayout();
+            this.FLP_Container.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,6 +430,7 @@
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tSWizardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bmacToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel FLP_Container;
     }
 }
 

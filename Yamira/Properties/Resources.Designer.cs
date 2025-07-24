@@ -63,9 +63,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_about_dark {
+        internal static System.Drawing.Bitmap ct_github_dark {
             get {
-                object obj = ResourceManager.GetObject("header_about_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_github_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_about_light {
+        internal static System.Drawing.Bitmap ct_github_light {
             get {
-                object obj = ResourceManager.GetObject("header_about_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_github_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_bmac_dark {
+        internal static System.Drawing.Bitmap ct_instagram_dark {
             get {
-                object obj = ResourceManager.GetObject("header_bmac_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_instagram_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_bmac_light {
+        internal static System.Drawing.Bitmap ct_instagram_light {
             get {
-                object obj = ResourceManager.GetObject("header_bmac_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_instagram_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_initial_dark {
+        internal static System.Drawing.Bitmap ct_ntfs_format_dark {
             get {
-                object obj = ResourceManager.GetObject("header_initial_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_ntfs_format_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_initial_light {
+        internal static System.Drawing.Bitmap ct_ntfs_format_light {
             get {
-                object obj = ResourceManager.GetObject("header_initial_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_ntfs_format_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_language_dark {
+        internal static System.Drawing.Bitmap ct_secure_off_dark {
             get {
-                object obj = ResourceManager.GetObject("header_language_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_secure_off_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_language_light {
+        internal static System.Drawing.Bitmap ct_secure_off_light {
             get {
-                object obj = ResourceManager.GetObject("header_language_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_secure_off_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_refresh_dark {
+        internal static System.Drawing.Bitmap ct_secure_on_dark {
             get {
-                object obj = ResourceManager.GetObject("header_refresh_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_secure_on_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_refresh_light {
+        internal static System.Drawing.Bitmap ct_secure_on_light {
             get {
-                object obj = ResourceManager.GetObject("header_refresh_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_secure_on_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_settings_dark {
+        internal static System.Drawing.Bitmap ct_website_dark {
             get {
-                object obj = ResourceManager.GetObject("header_settings_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_website_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_settings_light {
+        internal static System.Drawing.Bitmap ct_website_light {
             get {
-                object obj = ResourceManager.GetObject("header_settings_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_website_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_theme_dark {
+        internal static System.Drawing.Bitmap ct_x_dark {
             get {
-                object obj = ResourceManager.GetObject("header_theme_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_x_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_theme_light {
+        internal static System.Drawing.Bitmap ct_x_light {
             get {
-                object obj = ResourceManager.GetObject("header_theme_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_x_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_tswizard_dark {
+        internal static System.Drawing.Bitmap ct_youtube_dark {
             get {
-                object obj = ResourceManager.GetObject("header_tswizard_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_youtube_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_tswizard_light {
+        internal static System.Drawing.Bitmap ct_youtube_light {
             get {
-                object obj = ResourceManager.GetObject("header_tswizard_light", resourceCulture);
+                object obj = ResourceManager.GetObject("ct_youtube_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_update_dark {
+        internal static System.Drawing.Bitmap tm_about_dark {
             get {
-                object obj = ResourceManager.GetObject("header_update_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("tm_about_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap header_update_light {
+        internal static System.Drawing.Bitmap tm_about_light {
             get {
-                object obj = ResourceManager.GetObject("header_update_light", resourceCulture);
+                object obj = ResourceManager.GetObject("tm_about_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,179 @@ namespace Yamira.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap ts_preloader {
+        internal static System.Drawing.Bitmap tm_bmac_dark {
             get {
-                object obj = ResourceManager.GetObject("ts_preloader", resourceCulture);
+                object obj = ResourceManager.GetObject("tm_bmac_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_bmac_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_bmac_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_language_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_language_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_language_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_language_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_refresh_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_refresh_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_refresh_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_refresh_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_settings_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_settings_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_settings_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_settings_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_startup_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_startup_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_startup_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_startup_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_theme_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_theme_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_theme_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_theme_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_ts_wizard_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_ts_wizard_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_ts_wizard_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_ts_wizard_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_update_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_update_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_update_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_update_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap ts_close {
+            get {
+                object obj = ResourceManager.GetObject("ts_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap ts_preloader_release {
+            get {
+                object obj = ResourceManager.GetObject("ts_preloader_release", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

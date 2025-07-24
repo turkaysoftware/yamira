@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>25.07.0.%2a</ApplicationVersion>
+    <ApplicationVersion>25.08.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -87,11 +87,12 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>YamiraLogo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -176,25 +177,42 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="YamiraLogo.ico" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_bmac_dark.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_bmac_light.png" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_tswizard_dark.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_tswizard_light.png" />
-    <None Include="yamira_images\ts_preloader\ts_preloader.jpg" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_update_dark.png" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_theme_dark.png" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_settings_dark.png" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_refresh_dark.png" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_language_dark.png" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_initial_dark.png" />
-    <None Include="yamira_images\yamira_interface\dark_theme\header_about_dark.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_update_light.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_theme_light.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_settings_light.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_refresh_light.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_language_light.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_initial_light.png" />
-    <None Include="yamira_images\yamira_interface\light_theme\header_about_light.png" />
+    <None Include="yamira_images\yamira_ui\ts_material\ts_close.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_update_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_ts_wizard_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_theme_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_startup_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_settings_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_refresh_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_language_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_bmac_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\tm_about_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_youtube_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_x_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_website_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_secure_on_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_secure_off_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_ntfs_format_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_instagram_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_light\ct_github_light.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_update_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_ts_wizard_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_theme_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_startup_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_settings_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_refresh_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_language_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_bmac_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\tm_about_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_youtube_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_x_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_website_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_secure_on_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_secure_off_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_ntfs_format_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_instagram_dark.png" />
+    <None Include="yamira_images\yamira_ui\theme_dark\ct_github_dark.png" />
+    <None Include="yamira_images\ts_preloader\ts_preloader_release.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

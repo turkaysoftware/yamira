@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -12,18 +14,19 @@ namespace Yamira{
         // LINK SYSTEM
         // ======================================================================================================
         public class TS_LinkSystem{
-            public static string
-            website_link = "https://www.turkaysoftware.com",
-            twitter_x_link = "https://x.com/turkaysoftware",
-            instagram_link = "https://www.instagram.com/erayturkayy/",
-            github_link = "https://github.com/turkaysoftware",
-            //
-            github_link_lt = "https://raw.githubusercontent.com/turkaysoftware/yamira/main/Yamira/SoftwareVersion.txt",
-            github_link_lr = "https://github.com/turkaysoftware/yamira/releases/latest",
-            //
-            ts_wizard = "https://www.turkaysoftware.com/ts-wizard",
-            //
-            ts_bmac = "https://buymeacoffee.com/turkaysoftware";
+            public const string
+            // Main Control Links
+            github_link_lv      = "https://raw.githubusercontent.com/turkaysoftware/yamira/main/Yamira/SoftwareVersion.txt",
+            github_link_lr      = "https://github.com/turkaysoftware/yamira/releases/latest",
+            // Social Links
+            website_link        = "https://www.turkaysoftware.com",
+            twitter_x_link      = "https://x.com/turkaysoftware",
+            instagram_link      = "https://www.instagram.com/erayturkayy/",
+            github_link         = "https://github.com/turkaysoftware",
+            youtube_link        = "https://www.youtube.com/@turkaysoftware",
+            // Other Links
+            ts_wizard           = "https://www.turkaysoftware.com/ts-wizard",
+            ts_bmac             = "https://buymeacoffee.com/turkaysoftware";
         }
         // VERSIONS
         // ======================================================================================================
@@ -62,7 +65,11 @@ namespace Yamira{
                 { 9, new KeyValuePair<MessageBoxButtons, MessageBoxIcon>(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) }  // Yes/No/Cancel ve Soru
             };
             public static DialogResult TS_MessageBox(Form m_form, int m_mode, string m_message, string m_title = ""){
-                m_form.BringToFront();
+                if (m_form.InvokeRequired){
+                    m_form.Invoke((Action)(() => BringFormToFront(m_form)));
+                }else{
+                    BringFormToFront(m_form);
+                }
                 //
                 string m_box_title = string.IsNullOrEmpty(m_title) ? Application.ProductName : m_title;
                 //
@@ -76,6 +83,12 @@ namespace Yamira{
                 }
                 //
                 return MessageBox.Show(m_form, m_message, m_box_title, m_button, m_icon);
+            }
+            private static void BringFormToFront(Form m_form){
+                if (m_form.WindowState == FormWindowState.Minimized)
+                    m_form.WindowState = FormWindowState.Normal;
+                m_form.BringToFront();
+                m_form.Activate();
             }
         }
         // TS SOFTWARE COPYRIGHT DATE
@@ -129,19 +142,6 @@ namespace Yamira{
         public static string TS_String_Encoder(string get_text){
             return Encoding.UTF8.GetString(Encoding.Default.GetBytes(get_text)).Trim();
         }
-        // TURKISH LETTER CONVERTER
-        // ======================================================================================================
-        public static string TS_TR_LetterConverter(string called_text){
-            if (string.IsNullOrEmpty(called_text)) { return called_text; }
-            StringBuilder str_con = new StringBuilder(called_text);
-            str_con.Replace('Ç', 'C').Replace('ç', 'c');
-            str_con.Replace('Ğ', 'G').Replace('ğ', 'g');
-            str_con.Replace('İ', 'I').Replace('ı', 'i');
-            str_con.Replace('Ö', 'O').Replace('ö', 'o');
-            str_con.Replace('Ş', 'S').Replace('ş', 's');
-            str_con.Replace('Ü', 'U').Replace('ü', 'u');
-            return str_con.ToString().Trim();
-        }
         // TS THEME ENGINE
         // ======================================================================================================
         public class TS_ThemeEngine{
@@ -151,10 +151,11 @@ namespace Yamira{
                 // TS PRELOADER
                 { "TSBT_BGColor", Color.FromArgb(236, 242, 248) },
                 { "TSBT_BGColor2", Color.White },
-                { "TSBT_AccentColor", Color.FromArgb(114, 19, 42) },
+                { "TSBT_AccentColor", Color.FromArgb(207, 24, 0) },
                 { "TSBT_LabelColor1", Color.FromArgb(51, 51, 51) },
                 { "TSBT_LabelColor2", Color.FromArgb(100, 100, 100) },
-                { "TSBT_CloseBG", Color.FromArgb(200, 255, 255, 255) },
+                { "TSBT_CloseBG", Color.FromArgb(25, 255, 255, 255) },
+                { "TSBT_CloseBGHover", Color.FromArgb(50, 255, 255, 255) },
                 // HEADER MENU COLOR MODE
                 { "HeaderBGColor", Color.White },
                 { "HeaderFEColor", Color.FromArgb(51, 51, 51) },
@@ -162,14 +163,17 @@ namespace Yamira{
                 { "HeaderBGColor2", Color.FromArgb(236, 242, 248) },
                 // UI COLOR
                 { "PageContainerBGColor", Color.FromArgb(236, 242, 248) },
-                { "ContentLabelRightColor", Color.FromArgb(114, 19, 42) },
-                { "ContentLabelRightColorHover", Color.FromArgb(136, 24, 52) },
+                // ACCENT COLOR
+                { "AccentColor", Color.FromArgb(207, 24, 0) },
+                { "AccentColorHover", Color.FromArgb(226, 38, 13) },
+                // DATAGRID COLOR
                 { "DataGridBGColor", Color.White },
                 { "DataGridFEColor", Color.FromArgb(51, 51, 51) },
                 { "DataGridGridColor", Color.FromArgb(226, 226, 226) },
                 { "DataGridAlternatingColor", Color.FromArgb(236, 242, 248) },
-                { "DataGridHeaderBGColor", Color.FromArgb(114, 19, 42) },
+                { "DataGridHeaderBGColor", Color.FromArgb(207, 24, 0) },
                 { "DataGridHeaderFEColor", Color.WhiteSmoke },
+                // DYNAMIC ACTIVE BTN COLOR
                 { "DynamicThemeActiveBtnBGColor", Color.WhiteSmoke }
             };
             // DARK THEME COLORS
@@ -178,10 +182,11 @@ namespace Yamira{
                 // TS PRELOADER
                 { "TSBT_BGColor", Color.FromArgb(21, 23, 32) },
                 { "TSBT_BGColor2", Color.FromArgb(25, 31, 42) },
-                { "TSBT_AccentColor", Color.FromArgb(214, 0, 64) },
+                { "TSBT_AccentColor", Color.FromArgb(255, 51, 51) },
                 { "TSBT_LabelColor1", Color.WhiteSmoke },
                 { "TSBT_LabelColor2", Color.FromArgb(176, 184, 196) },
-                { "TSBT_CloseBG", Color.FromArgb(210, 25, 31, 42) },
+                { "TSBT_CloseBG", Color.FromArgb(75, 25, 31, 42) },
+                { "TSBT_CloseBGHover", Color.FromArgb(100, 25, 31, 42) },
                 // HEADER MENU COLOR MODE
                 { "HeaderBGColor", Color.FromArgb(25, 31, 42) },
                 { "HeaderFEColor", Color.WhiteSmoke },
@@ -189,15 +194,18 @@ namespace Yamira{
                 { "HeaderBGColor2", Color.FromArgb(21, 23, 32) },
                 // UI COLOR MODES
                 { "PageContainerBGColor", Color.FromArgb(21, 23, 32) },
-                { "ContentLabelRightColor", Color.FromArgb(151, 27, 57) },
-                { "ContentLabelRightColorHover", Color.FromArgb(172, 31, 66) },
+                // ACCENT COLOR
+                { "AccentColor", Color.FromArgb(255, 51, 51) },
+                { "AccentColorHover", Color.FromArgb(252, 69, 69) },
+                // DATAGRID COLOR
                 { "DataGridBGColor", Color.FromArgb(25, 31, 42) },
                 { "DataGridFEColor", Color.WhiteSmoke },
                 { "DataGridGridColor", Color.FromArgb(36, 45, 61) },
                 { "DataGridAlternatingColor", Color.FromArgb(21, 23, 32) },
-                { "DataGridHeaderBGColor", Color.FromArgb(151, 27, 57) },
-                { "DataGridHeaderFEColor", Color.WhiteSmoke },
-                { "DynamicThemeActiveBtnBGColor", Color.WhiteSmoke }
+                { "DataGridHeaderBGColor", Color.FromArgb(255, 51, 51) },
+                { "DataGridHeaderFEColor", Color.FromArgb(21, 23, 32) },
+                // DYNAMIC ACTIVE BTN COLOR
+                { "DynamicThemeActiveBtnBGColor", Color.FromArgb(21, 23, 32)}
             };
             // THEME SWITCHER
             // ====================================
@@ -209,6 +217,56 @@ namespace Yamira{
                 }
                 return Color.Transparent;
             }
+        }
+        // DPI SENSITIVE DYNAMIC IMAGE RENDERER
+        // ======================================================================================================
+        public static void TSImageRenderer(object baseTarget, Image sourceImage, int basePadding, ContentAlignment imageAlign = ContentAlignment.MiddleCenter){
+            if (sourceImage == null || baseTarget == null) return;
+            const int minImageSize = 16;
+            try{
+                int calculatedSize;
+                Image previousImage = null;
+                Image ResizeImage(Image targetImg, int targetSize){
+                    Bitmap resizedEngine = new Bitmap(targetSize, targetSize, PixelFormat.Format32bppArgb);
+                    using (Graphics renderGraphics = Graphics.FromImage(resizedEngine)){
+                        renderGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        renderGraphics.SmoothingMode = SmoothingMode.AntiAlias;
+                        renderGraphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                        renderGraphics.CompositingQuality = CompositingQuality.HighQuality;
+                        renderGraphics.DrawImage(targetImg, 0, 0, targetSize, targetSize);
+                    }
+                    return resizedEngine;
+                }
+                if (baseTarget is Control targetControl){
+                    float dpi = targetControl.DeviceDpi > 0 ? targetControl.DeviceDpi : 96f;
+                    float dpiScaleFactor = dpi / 96f;
+                    int paddingWithScale = (int)Math.Round(basePadding * dpiScaleFactor);
+                    //
+                    calculatedSize = targetControl.Height - paddingWithScale;
+                    if (calculatedSize <= 0) { calculatedSize = minImageSize; }
+                    Image resizedImage = ResizeImage(sourceImage, calculatedSize);
+                    if (targetControl is Button buttonMode){
+                        previousImage = buttonMode.Image;
+                        buttonMode.Image = resizedImage;
+                        buttonMode.ImageAlign = imageAlign;
+                    }else if (targetControl is PictureBox pictureBoxMode){
+                        previousImage = pictureBoxMode.Image;
+                        pictureBoxMode.Image = resizedImage;
+                        pictureBoxMode.SizeMode = PictureBoxSizeMode.Zoom;
+                    }else{
+                        resizedImage.Dispose();
+                    }
+                }else if (baseTarget is ToolStripItem toolStripItemMode){
+                    calculatedSize = toolStripItemMode.Height - basePadding;
+                    if (calculatedSize <= 0) { calculatedSize = minImageSize; }
+                    Image resizedImage = ResizeImage(sourceImage, calculatedSize);
+                    previousImage = toolStripItemMode.Image;
+                    toolStripItemMode.Image = resizedImage;
+                }else{
+                    return;
+                }
+                if (previousImage != null && previousImage != sourceImage) { previousImage.Dispose(); }
+            }catch (Exception){ }
         }
         // DYNAMIC SIZE COUNT ALGORITHM
         // ======================================================================================================
@@ -246,9 +304,9 @@ namespace Yamira{
         // ======================================================================================================
         [DllImport("DwmApi")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
-        // DPI AWARE
+        // DPI AWARE V2
         // ======================================================================================================
         [DllImport("user32.dll")]
-        public static extern bool SetProcessDPIAware();
+        public static extern bool SetProcessDpiAwarenessContext(IntPtr dpiFlag);
     }
 }

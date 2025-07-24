@@ -18,6 +18,8 @@ namespace Yamira{
             //
             PanelHeader.Parent = ImageAbout;
             CloseAboutBtn.Parent = PanelHeader;
+            //
+            TSImageRenderer(CloseAboutBtn, Properties.Resources.ts_close, 20);
         }
         // DRAGGING VARIABLES
         // ======================================================================================================
@@ -75,9 +77,15 @@ namespace Yamira{
                         about_button.BackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "DataGridHeaderBGColor");
                         about_button.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Yamira.theme, "DataGridHeaderBGColor");
                         about_button.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "DataGridHeaderBGColor");
-                        about_button.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "ContentLabelRightColorHover");
+                        about_button.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "AccentColorHover");
                     }
                 }
+                //
+                TSImageRenderer(About_WebsiteBtn, Yamira.theme == 1 ? Properties.Resources.ct_website_light : Properties.Resources.ct_website_dark, 15, ContentAlignment.MiddleRight);
+                TSImageRenderer(About_XBtn, Yamira.theme == 1 ? Properties.Resources.ct_x_light : Properties.Resources.ct_x_dark, 15, ContentAlignment.MiddleRight);
+                TSImageRenderer(About_InstagramBtn, Yamira.theme == 1 ? Properties.Resources.ct_instagram_light : Properties.Resources.ct_instagram_dark, 15, ContentAlignment.MiddleRight);
+                TSImageRenderer(About_GitHubBtn, Yamira.theme == 1 ? Properties.Resources.ct_github_light : Properties.Resources.ct_github_dark, 15, ContentAlignment.MiddleRight);
+                TSImageRenderer(About_YouTube, Yamira.theme == 1 ? Properties.Resources.ct_youtube_light : Properties.Resources.ct_youtube_dark, 12, ContentAlignment.MiddleRight);
                 //
                 AboutTable.BackgroundColor = TS_ThemeEngine.ColorMode(Yamira.theme, "DataGridBGColor");
                 AboutTable.GridColor = TS_ThemeEngine.ColorMode(Yamira.theme, "DataGridGridColor");
@@ -92,16 +100,17 @@ namespace Yamira{
                 //
                 CloseAboutBtn.BackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "TSBT_CloseBG");
                 CloseAboutBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Yamira.theme, "TSBT_CloseBG");
-                CloseAboutBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "TSBT_CloseBG");
-                CloseAboutBtn.ForeColor = TS_ThemeEngine.ColorMode(Yamira.theme, "TSBT_LabelColor1");
+                CloseAboutBtn.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "TSBT_CloseBGHover");
+                CloseAboutBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Yamira.theme, "TSBT_CloseBGHover");
                 // ======================================================================================================
                 // TEXTS
                 TSGetLangs software_lang = new TSGetLangs(Yamira.lang_path);
                 Text = string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_title")), Application.ProductName);
-                About_WebsiteBtn.Text = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_website_page"));
-                About_XBtn.Text = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_twitter_page"));
-                About_InstagramBtn.Text = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_instagram_page"));
-                About_GitHubBtn.Text = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_github_page"));
+                About_WebsiteBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_website_page"));
+                About_XBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_twitter_page"));
+                About_InstagramBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_instagram_page"));
+                About_GitHubBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_github_page"));
+                About_YouTube.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_youtube_page"));
                 //
                 AboutTable.Columns[0].HeaderText = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_lang_name"));
                 AboutTable.Columns[1].HeaderText = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_lang_translator"));
@@ -110,9 +119,6 @@ namespace Yamira{
         // DGV CLEAR SELECTION
         // ======================================================================================================
         private void AboutTable_SelectionChanged(object sender, EventArgs e){ AboutTable.ClearSelection(); }
-        // MEDIA LINK SYSTEM
-        // ======================================================================================================
-        TS_LinkSystem TS_LinkSystem = new TS_LinkSystem();
         // WEBSITE LINK
         // ======================================================================================================
         private void About_WebsiteBtn_Click(object sender, EventArgs e){
@@ -134,11 +140,18 @@ namespace Yamira{
                 Process.Start(new ProcessStartInfo(TS_LinkSystem.instagram_link){ UseShellExecute = true });
             }catch (Exception){ }
         }
-        // GITHUN LINK
+        // GITHUB LINK
         // ======================================================================================================
         private void About_GitHubBtn_Click(object sender, EventArgs e){
             try{
                 Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link){ UseShellExecute = true });
+            }catch (Exception){ }
+        }
+        // YOUTUBE LINK
+        // ======================================================================================================
+        private void About_YouTube_Click(object sender, EventArgs e){
+            try{
+                Process.Start(new ProcessStartInfo(TS_LinkSystem.youtube_link){ UseShellExecute = true });
             }catch (Exception){ }
         }
         // FORM DRAGGING SYSTEM

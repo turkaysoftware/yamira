@@ -49,6 +49,7 @@ namespace Yamira{
         // LOCAL VARIABLES
         // ======================================================================================================
         string ts_wizard_name = "TS Wizard";
+        bool virtualization_mode = true;
         // UI COLORS
         // ======================================================================================================
         static List<Color> header_colors = new List<Color>() { Color.Transparent, Color.Transparent, Color.Transparent };
@@ -58,13 +59,17 @@ namespace Yamira{
             public HeaderMenuColors() : base(new HeaderColors()){ }
             protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e){ e.ArrowColor = header_colors[1]; base.OnRenderArrow(e); }
             protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e){
-                // e.Graphics.FillRectangle(new SolidBrush(header_colors[0]), e.ImageRectangle); // BG Color Check
-                using (Pen anti_alias_pen = new Pen(header_colors[2], 3)){
-                    Point p1 = new Point(e.ImageRectangle.Left + 3, e.ImageRectangle.Top + e.ImageRectangle.Height / 2);
-                    Point p2 = new Point(e.ImageRectangle.Left + 7, e.ImageRectangle.Bottom - 4);
-                    Point p3 = new Point(e.ImageRectangle.Right - 2, e.ImageRectangle.Top + 3);
-                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    e.Graphics.DrawLines(anti_alias_pen, new Point[] { p1, p2, p3 });
+                Graphics g = e.Graphics;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                float dpiScale = g.DpiX / 96f;
+                // TICK BG
+                // using (SolidBrush bgBrush = new SolidBrush(header_colors[0])){ RectangleF bgRect = new RectangleF( e.ImageRectangle.Left, e.ImageRectangle.Top, e.ImageRectangle.Width,e.ImageRectangle.Height); g.FillRectangle(bgBrush, bgRect); }
+                using (Pen anti_alias_pen = new Pen(header_colors[2], 3 * dpiScale)){
+                    Rectangle rect = e.ImageRectangle;
+                    Point p1 = new Point((int)(rect.Left + 3 * dpiScale), (int)(rect.Top + rect.Height / 2));
+                    Point p2 = new Point((int)(rect.Left + 7 * dpiScale), (int)(rect.Bottom - 4 * dpiScale));
+                    Point p3 = new Point((int)(rect.Right - 2 * dpiScale), (int)(rect.Top + 3 * dpiScale));
+                    g.DrawLines(anti_alias_pen, new Point[] { p1, p2, p3 });
                 }
             }
         }
@@ -154,6 +159,12 @@ namespace Yamira{
                 return true;
             }
         }
+        private void VirtualizationModeData(){
+            DataMainTable.Rows.Add(@"F:\", "TS SanDisk Ultra Luxe", "FAT32", "29,7 GB", "On");
+            DataMainTable.Rows.Add(@"G:\", "TS Samsung Bar Plus", "NTFS", "59,5 GB", "On");
+            DataMainTable.Rows.Add(@"H:\", "TS Samsung Bar Plus", "NTFS", "119,1 GB", "Off");
+            DataMainTable.ClearSelection();
+        }
         // REFRESH
         // ======================================================================================================
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e){
@@ -166,7 +177,11 @@ namespace Yamira{
             HeaderMenu.Cursor = Cursors.Hand;
             //
             RunSoftwareEngine();
-            LoadUSBDrives();
+            if (!virtualization_mode){
+                LoadUSBDrives();
+            }else{
+                VirtualizationModeData();
+            }
             //
             Task softwareUpdateCheck = Task.Run(() => software_update_check(0));
         }
@@ -430,30 +445,38 @@ namespace Yamira{
                     DwmSetWindowAttribute(Handle, 20, new[] { theme == 1 ? 0 : 1 }, 4);
                 }
                 if (theme == 1){
-                    settingsToolStripMenuItem.Image = Properties.Resources.header_settings_light;
-                    themeToolStripMenuItem.Image = Properties.Resources.header_theme_light;
-                    languageToolStripMenuItem.Image = Properties.Resources.header_language_light;
-                    initialViewToolStripMenuItem.Image = Properties.Resources.header_initial_light;
-                    checkforUpdatesToolStripMenuItem.Image = Properties.Resources.header_update_light;
-                    refreshToolStripMenuItem.Image = Properties.Resources.header_refresh_light;
-                    tSWizardToolStripMenuItem.Image = Properties.Resources.header_tswizard_light;
-                    bmacToolStripMenuItem.Image = Properties.Resources.header_bmac_light;
-                    aboutToolStripMenuItem.Image = Properties.Resources.header_about_light;
+                    TSImageRenderer(settingsToolStripMenuItem, Properties.Resources.tm_settings_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(themeToolStripMenuItem, Properties.Resources.tm_theme_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(languageToolStripMenuItem, Properties.Resources.tm_language_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(initialViewToolStripMenuItem, Properties.Resources.tm_startup_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(checkforUpdatesToolStripMenuItem, Properties.Resources.tm_update_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(refreshToolStripMenuItem, Properties.Resources.tm_refresh_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(bmacToolStripMenuItem, Properties.Resources.tm_bmac_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_light, 0, ContentAlignment.MiddleRight);
+                    // UI
+                    TSImageRenderer(BtnActiveProtect, Properties.Resources.ct_secure_on_light, 15, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnDisabledProtect, Properties.Resources.ct_secure_off_light, 15, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnFormatNTFS, Properties.Resources.ct_ntfs_format_light, 15, ContentAlignment.MiddleLeft);
                 }else if (theme == 0){
-                    settingsToolStripMenuItem.Image = Properties.Resources.header_settings_dark;
-                    themeToolStripMenuItem.Image = Properties.Resources.header_theme_dark;
-                    languageToolStripMenuItem.Image = Properties.Resources.header_language_dark;
-                    initialViewToolStripMenuItem.Image = Properties.Resources.header_initial_dark;
-                    checkforUpdatesToolStripMenuItem.Image = Properties.Resources.header_update_dark;
-                    refreshToolStripMenuItem.Image = Properties.Resources.header_refresh_dark;
-                    tSWizardToolStripMenuItem.Image = Properties.Resources.header_tswizard_dark;
-                    bmacToolStripMenuItem.Image = Properties.Resources.header_bmac_dark;
-                    aboutToolStripMenuItem.Image = Properties.Resources.header_about_dark;
+                    TSImageRenderer(settingsToolStripMenuItem, Properties.Resources.tm_settings_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(themeToolStripMenuItem, Properties.Resources.tm_theme_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(languageToolStripMenuItem, Properties.Resources.tm_language_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(initialViewToolStripMenuItem, Properties.Resources.tm_startup_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(checkforUpdatesToolStripMenuItem, Properties.Resources.tm_update_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(refreshToolStripMenuItem, Properties.Resources.tm_refresh_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(bmacToolStripMenuItem, Properties.Resources.tm_bmac_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_dark, 0, ContentAlignment.MiddleRight);
+                    // UI
+                    TSImageRenderer(BtnActiveProtect, Properties.Resources.ct_secure_on_dark, 15, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnDisabledProtect, Properties.Resources.ct_secure_off_dark, 15, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnFormatNTFS, Properties.Resources.ct_ntfs_format_dark, 15, ContentAlignment.MiddleLeft);
                 }
                 //
                 header_colors[0] = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 header_colors[1] = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
-                header_colors[2] = TS_ThemeEngine.ColorMode(theme, "ContentLabelRightColor");
+                header_colors[2] = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 HeaderMenu.Renderer = new HeaderMenuColors();
                 // HEADER MENU
                 HeaderMenu.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor2");
@@ -504,13 +527,13 @@ namespace Yamira{
                 BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGColor");
                 Panel_Right.BackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(theme), "PageContainerBGColor");
                 // ALL BUTTON
-                foreach (Control control in Panel_Right.Controls){
+                foreach (Control control in FLP_Container.Controls){
                     if (control is Button button){
                         button.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBGColor");
-                        button.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentLabelRightColor");
-                        button.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "ContentLabelRightColor");
-                        button.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "ContentLabelRightColor");
-                        button.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(theme, "ContentLabelRightColorHover");
+                        button.BackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                        button.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                        button.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                        button.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColorHover");
                     }
                 }
                 // NOT USB DEVICE LABEL
@@ -608,9 +631,9 @@ namespace Yamira{
                 DataMainTable.Columns[3].HeaderText = TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_dgv_size"));
                 DataMainTable.Columns[4].HeaderText = TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_dgv_protect_mode"));
                 //
-                BtnActiveProtect.Text = TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_btn_protect_active"));
-                BtnDisabledProtect.Text = TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_btn_protect_disabled"));
-                BtnFormatNTFS.Text = TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_btn_ntfs_format"));
+                BtnActiveProtect.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_btn_protect_active"));
+                BtnDisabledProtect.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_btn_protect_disabled"));
+                BtnFormatNTFS.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_btn_ntfs_format"));
                 //
                 Label_NotUSB.Text = TS_String_Encoder(software_lang.TSReadLangs("Yamira", "y_not_usb_storage_device"));
                 //
@@ -707,7 +730,7 @@ namespace Yamira{
                     string client_version = TS_VersionEngine.TS_SofwareVersion(2, Program.ts_version_mode).Trim();
                     int client_num_version = Convert.ToInt32(client_version.Replace(".", string.Empty));
                     //
-                    string[] version_content = webClient.DownloadString(TS_LinkSystem.github_link_lt).Split('=');
+                    string[] version_content = webClient.DownloadString(TS_LinkSystem.github_link_lv).Split('=');
                     string last_version = version_content[1].Trim();
                     int last_num_version = Convert.ToInt32(last_version.Replace(".", string.Empty));
                     //
@@ -776,24 +799,28 @@ namespace Yamira{
                 }
             }catch (Exception){ }
         }
+        // TS TOOL LAUNCHER MODULE
+        // ======================================================================================================
+        private void TSToolLauncher<T>(string formName, string langKey) where T : Form, new(){
+            try{
+                TSGetLangs software_lang = new TSGetLangs(lang_path);
+                T tool = new T { Name = formName };
+                if (Application.OpenForms[formName] == null){
+                    tool.Show();
+                }else{
+                    if (Application.OpenForms[formName].WindowState == FormWindowState.Minimized){
+                        Application.OpenForms[formName].WindowState = FormWindowState.Normal;
+                    }
+                    string public_message = string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", langKey)));
+                    TS_MessageBoxEngine.TS_MessageBox(this, 1, public_message);
+                    Application.OpenForms[formName].Activate();
+                }
+            }catch (Exception){ }
+        }
         // YAMIRA ABOUT
         // ======================================================================================================
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e){
-            try{
-                TSGetLangs software_lang = new TSGetLangs(lang_path);
-                YamiraAbout yamira_about = new YamiraAbout();
-                string yamira_about_name = "yamira_about";
-                yamira_about.Name = yamira_about_name;
-                if (Application.OpenForms[yamira_about_name] == null){
-                    yamira_about.Show();
-                }else{
-                    if (Application.OpenForms[yamira_about_name].WindowState == FormWindowState.Minimized){
-                        Application.OpenForms[yamira_about_name].WindowState = FormWindowState.Normal;
-                    }
-                    Application.OpenForms[yamira_about_name].Activate();
-                    TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_about"))));
-                }
-            }catch (Exception){ }
+            TSToolLauncher<YamiraAbout>("yamira_about", "header_menu_about");
         }
         // EXIT
         // ======================================================================================================
