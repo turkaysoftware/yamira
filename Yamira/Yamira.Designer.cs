@@ -107,7 +107,7 @@
             this.lightThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.lightThemeToolStripMenuItem.Text = "Light Theme";
-            this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.lightThemeToolStripMenuItem_Click);
+            this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.LightThemeToolStripMenuItem_Click);
             // 
             // darkThemeToolStripMenuItem
             // 
@@ -115,7 +115,7 @@
             this.darkThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.darkThemeToolStripMenuItem.Text = "Dark Theme";
-            this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.DarkThemeToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
@@ -131,14 +131,14 @@
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.englishToolStripMenuItem.Text = "English";
-            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click);
             // 
             // turkishToolStripMenuItem
             // 
             this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
             this.turkishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.turkishToolStripMenuItem.Text = "Turkish";
-            this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
+            this.turkishToolStripMenuItem.Click += new System.EventHandler(this.TurkishToolStripMenuItem_Click);
             // 
             // initialViewToolStripMenuItem
             // 
@@ -155,7 +155,7 @@
             this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.windowedToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.windowedToolStripMenuItem.Text = "Windowed";
-            this.windowedToolStripMenuItem.Click += new System.EventHandler(this.windowedToolStripMenuItem_Click);
+            this.windowedToolStripMenuItem.Click += new System.EventHandler(this.WindowedToolStripMenuItem_Click);
             // 
             // fullScreenToolStripMenuItem
             // 
@@ -163,7 +163,7 @@
             this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
-            this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.fullScreenToolStripMenuItem_Click);
+            this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.FullScreenToolStripMenuItem_Click);
             // 
             // checkforUpdatesToolStripMenuItem
             // 
@@ -171,7 +171,7 @@
             this.checkforUpdatesToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
             this.checkforUpdatesToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.checkforUpdatesToolStripMenuItem.Text = "Check for Updates";
-            this.checkforUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkforUpdatesToolStripMenuItem_Click);
+            this.checkforUpdatesToolStripMenuItem.Click += new System.EventHandler(this.CheckforUpdatesToolStripMenuItem_Click);
             // 
             // refreshToolStripMenuItem
             // 
@@ -180,7 +180,7 @@
             this.refreshToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
             // 
             // tSWizardToolStripMenuItem
             // 
@@ -190,7 +190,7 @@
             | System.Windows.Forms.Keys.S)));
             this.tSWizardToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.tSWizardToolStripMenuItem.Text = "TSWizard";
-            this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.tSWizardToolStripMenuItem_Click);
+            this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.TSWizardToolStripMenuItem_Click);
             // 
             // bmacToolStripMenuItem
             // 
@@ -200,7 +200,7 @@
             | System.Windows.Forms.Keys.D)));
             this.bmacToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.bmacToolStripMenuItem.Text = "Bmac";
-            this.bmacToolStripMenuItem.Click += new System.EventHandler(this.bmacToolStripMenuItem_Click);
+            this.bmacToolStripMenuItem.Click += new System.EventHandler(this.BmacToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -209,7 +209,7 @@
             this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // Panel_BG
             // 

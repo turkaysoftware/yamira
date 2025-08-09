@@ -43,20 +43,20 @@ namespace Yamira{
                 }.Where(check_file => File.Exists(check_file)).ToList();
                 foreach (var file in get_langs_file){
                     TSSettingsSave software_read_settings = new TSSettingsSave(file);
-                    string[] get_name = TS_String_Encoder(software_read_settings.TSReadSettings("Main", "lang_name")).Split('/');
-                    string get_lang_translator = TS_String_Encoder(software_read_settings.TSReadSettings("Main", "translator"));
+                    string[] get_name = software_read_settings.TSReadSettings("Main", "lang_name").Split('/');
+                    string get_lang_translator = software_read_settings.TSReadSettings("Main", "translator");
                     AboutTable.Rows.Add(get_name[0].Trim(), get_lang_translator.Trim());
                 }
                 AboutTable.AllowUserToResizeColumns = false;
                 foreach (DataGridViewColumn A_Column in AboutTable.Columns){ A_Column.SortMode = DataGridViewColumnSortMode.NotSortable; }
                 AboutTable.ClearSelection();
                 // GET PRELOAD SETTINGS
-                about_preloader();
+                About_preloader();
             }catch (Exception){ }
         }
         // DYNAMIC THEME VOID
         // ======================================================================================================
-        public void about_preloader(){
+        public void About_preloader(){
             try{
                 // COLOR SETTINGS
                 int set_attribute = Yamira.theme == 1 ? 20 : 19;
@@ -105,15 +105,15 @@ namespace Yamira{
                 // ======================================================================================================
                 // TEXTS
                 TSGetLangs software_lang = new TSGetLangs(Yamira.lang_path);
-                Text = string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_title")), Application.ProductName);
-                About_WebsiteBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_website_page"));
-                About_XBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_twitter_page"));
-                About_InstagramBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_instagram_page"));
-                About_GitHubBtn.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_github_page"));
-                About_YouTube.Text = " " + TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_youtube_page"));
+                Text = string.Format(software_lang.TSReadLangs("SoftwareAbout", "sa_title"), Application.ProductName);
+                About_WebsiteBtn.Text = " " + software_lang.TSReadLangs("SoftwareAbout", "sa_website_page");
+                About_XBtn.Text = " " + software_lang.TSReadLangs("SoftwareAbout", "sa_twitter_page");
+                About_InstagramBtn.Text = " " + software_lang.TSReadLangs("SoftwareAbout", "sa_instagram_page");
+                About_GitHubBtn.Text = " " + software_lang.TSReadLangs("SoftwareAbout", "sa_github_page");
+                About_YouTube.Text = " " + software_lang.TSReadLangs("SoftwareAbout", "sa_youtube_page");
                 //
-                AboutTable.Columns[0].HeaderText = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_lang_name"));
-                AboutTable.Columns[1].HeaderText = TS_String_Encoder(software_lang.TSReadLangs("SoftwareAbout", "sa_lang_translator"));
+                AboutTable.Columns[0].HeaderText = software_lang.TSReadLangs("SoftwareAbout", "sa_lang_name");
+                AboutTable.Columns[1].HeaderText = software_lang.TSReadLangs("SoftwareAbout", "sa_lang_translator");
             }catch (Exception){ }
         }
         // DGV CLEAR SELECTION
