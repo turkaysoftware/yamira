@@ -44,6 +44,7 @@ With these instructions, you can download and use the correct version of Yamira 
 # Supported Languages
 
 - English
+- Polish
 - Turkish
 
 # Supported Themes
