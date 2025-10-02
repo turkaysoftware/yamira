@@ -8,6 +8,7 @@
 // ======================================================================================================
 
 using Microsoft.VisualBasic;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,12 +16,12 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.Principal;
 using System.Security.AccessControl;
-using System.Management;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -34,24 +35,40 @@ namespace Yamira{
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             //
+            DataMainTable.RowTemplate.Height = (int)(26 * this.DeviceDpi / 96f);
             for (int i = 0; i < 6; i++){ DataMainTable.Columns.Add("y_data", "Data"); }
+            DataMainTable.Columns[0].Width = (int)(75 * this.DeviceDpi / 96f);
+            DataMainTable.Columns[1].Width = (int)(200 * this.DeviceDpi / 96f);
+            DataMainTable.Columns[2].Width = (int)(90 * this.DeviceDpi / 96f);
+            DataMainTable.Columns[3].Width = (int)(90 * this.DeviceDpi / 96f);
+            DataMainTable.Columns[4].Width = (int)(90 * this.DeviceDpi / 96f);
+            DataMainTable.Columns[5].Width = (int)(150 * this.DeviceDpi / 96f);
+            foreach (DataGridViewColumn columnPadding in DataMainTable.Columns){
+                int scaledPadding = (int)(3 * this.DeviceDpi / 96f);
+                columnPadding.DefaultCellStyle.Padding = new Padding(scaledPadding, 0, 0, 0);
+            }
             //
             foreach (DataGridViewColumn DataTable in DataMainTable.Columns){
                 DataTable.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
             // LANGUAGE SET MODES
             englishToolStripMenuItem.Tag = "en";
+            polishToolStripMenuItem.Tag = "pl";
             turkishToolStripMenuItem.Tag = "tr";
             // LANGUAGE SET EVENTS
             englishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
+            polishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             turkishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
+            //
+            TSThemeModeHelper.InitializeGlobalTheme();
+            SystemEvents.UserPreferenceChanged += (s, e) => TSUseSystemTheme();
             //
             StartTSUSBIndicator();
         }
         // GLOBAL VARIABLES
         // ======================================================================================================
         public static string lang, lang_path, default_create_folder = "TSProtectionSystem";
-        public static int theme, startup_status;
+        public static int theme, themeSystem, startup_status;
         // LOCAL VARIABLES
         // ======================================================================================================
         readonly string ts_wizard_name = "TS Wizard";
@@ -114,14 +131,16 @@ namespace Yamira{
             // ======================================================================================================
             TSSettingsSave software_read_settings = new TSSettingsSave(ts_sf);
             //
-            int theme_mode = int.TryParse(software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus"), out int the_status) ? the_status : 1;
-            Theme_engine(theme_mode);
+            int theme_mode = int.TryParse(software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus"), out int the_status) && (the_status == 0 || the_status == 1 || the_status == 2) ? the_status : 1;
+            if (theme_mode == 2) { themeSystem = 2; Theme_engine(GetSystemTheme(2)); } else Theme_engine(theme_mode);
             darkThemeToolStripMenuItem.Checked = theme_mode == 0;
             lightThemeToolStripMenuItem.Checked = theme_mode == 1;
+            systemThemeToolStripMenuItem.Checked = theme_mode == 2;
             //
             string lang_mode = software_read_settings.TSReadSettings(ts_settings_container, "LanguageStatus");
             var languageFiles = new Dictionary<string, (object langResource, ToolStripMenuItem menuItem, bool fileExists)>{
                 { "en", (ts_lang_en, englishToolStripMenuItem, File.Exists(ts_lang_en)) },
+                { "pl", (ts_lang_pl, polishToolStripMenuItem, File.Exists(ts_lang_pl)) },
                 { "tr", (ts_lang_tr, turkishToolStripMenuItem, File.Exists(ts_lang_tr)) },
             };
             foreach (var langLoader in languageFiles) { langLoader.Value.menuItem.Enabled = langLoader.Value.fileExists; }
@@ -482,32 +501,46 @@ namespace Yamira{
         }
         // ======================================================================================================
         // THEME SETTINGS
+        private ToolStripMenuItem selected_theme = null;
         private void Select_theme_active(object target_theme){
-            ToolStripMenuItem selected_theme = null;
+            if (target_theme == null)
+                return;
+            ToolStripMenuItem clicked_theme = (ToolStripMenuItem)target_theme;
+            if (selected_theme == clicked_theme)
+                return;
             Select_theme_deactive();
-            if (target_theme != null){
-                if (selected_theme != (ToolStripMenuItem)target_theme){
-                    selected_theme = (ToolStripMenuItem)target_theme;
-                    selected_theme.Checked = true;
-                }
-            }
+            selected_theme = clicked_theme;
+            selected_theme.Checked = true;
         }
         private void Select_theme_deactive(){
-            foreach (ToolStripMenuItem disabled_theme in themeToolStripMenuItem.DropDownItems){
-                disabled_theme.Checked = false;
+            foreach (ToolStripMenuItem theme in themeToolStripMenuItem.DropDownItems){
+                theme.Checked = false;
             }
         }
+        // THEME SWAP
+        // ======================================================================================================
+        private void SystemThemeToolStripMenuItem_Click(object sender, EventArgs e){
+            themeSystem = 2; Theme_engine(GetSystemTheme(2)); SaveTheme(2); Select_theme_active(sender);
+        }
         private void LightThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 1){ Theme_engine(1); Select_theme_active(sender); }
+            themeSystem = 0; Theme_engine(1); SaveTheme(1); Select_theme_active(sender);
         }
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 0){ Theme_engine(0); Select_theme_active(sender); }
+            themeSystem = 0; Theme_engine(0); SaveTheme(0); Select_theme_active(sender);
+        }
+        private void TSUseSystemTheme(){ if (themeSystem == 2) Theme_engine(GetSystemTheme(2)); }
+        private void SaveTheme(int ts){
+            // SAVE CURRENT THEME
+            try{
+                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
+            }catch (Exception){ }
         }
         private void Theme_engine(int ts){
             try{
                 theme = ts;
                 //
-                TSSetWindowTheme(Handle, theme);
+                TSThemeModeHelper.SetThemeMode(ts == 0);
                 //
                 if (theme == 1){
                     TSImageRenderer(settingsToolStripMenuItem, Properties.Resources.tm_settings_light, 0, ContentAlignment.MiddleRight);
@@ -581,11 +614,6 @@ namespace Yamira{
                 DataMainTable.DefaultCellStyle.SelectionForeColor = TS_ThemeEngine.ColorMode(theme, "DataGridHeaderFEColor");
                 //
                 Software_other_page_preloader();
-                //
-                try{
-                    TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
-                    software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
-                }catch (Exception){ }
             }catch (Exception){ }
         }
         private void SetMenuStripColors(MenuStrip menuStrip, Color bgColor, Color fgColor){
@@ -662,9 +690,11 @@ namespace Yamira{
                 themeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_theme");
                 lightThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_light");
                 darkThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_dark");
+                systemThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_system");
                 // LANGS
                 languageToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_language");
                 englishToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_en");
+                polishToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_pl");
                 turkishToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_tr");
                 // INITIAL VIEW
                 startupToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_start");
@@ -849,7 +879,7 @@ namespace Yamira{
                         TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification"), ts_wizard_name));
                     }
                 }else{
-                    DialogResult ts_wizard_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("TSWizard", "tsw_content"), software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard"), Application.CompanyName, "\n\n", Application.ProductName, Application.CompanyName, "\n\n"), string.Format(software_lang.TSReadLangs("TSWizard", "tsw_title"), Application.ProductName));
+                    DialogResult ts_wizard_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("TSWizard", "tsw_content"), software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard"), Application.CompanyName, "\n\n", Application.ProductName, Application.CompanyName, "\n\n"), string.Format("{0} - {1}", Application.ProductName, ts_wizard_name));
                     if (ts_wizard_query == DialogResult.Yes){
                         Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_wizard) { UseShellExecute = true });
                     }

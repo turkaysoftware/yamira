@@ -39,8 +39,10 @@
             this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.polishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,10 +57,10 @@
             this.DataMainTable = new System.Windows.Forms.DataGridView();
             this.Panel_Right = new System.Windows.Forms.Panel();
             this.FLP_Container = new System.Windows.Forms.FlowLayoutPanel();
+            this.Label_NotUSB = new System.Windows.Forms.Label();
             this.BtnActiveProtect = new Yamira.TSCustomButton();
             this.BtnDisabledProtect = new Yamira.TSCustomButton();
             this.BtnFormatNTFS = new Yamira.TSCustomButton();
-            this.Label_NotUSB = new System.Windows.Forms.Label();
             this.HeaderMenu.SuspendLayout();
             this.Panel_BG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataMainTable)).BeginInit();
@@ -96,7 +98,8 @@
             // 
             this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lightThemeToolStripMenuItem,
-            this.darkThemeToolStripMenuItem});
+            this.darkThemeToolStripMenuItem,
+            this.systemThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
             this.themeToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.themeToolStripMenuItem.Text = "Theme";
@@ -105,7 +108,7 @@
             // 
             this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
             this.lightThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.lightThemeToolStripMenuItem.Text = "Light Theme";
             this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.LightThemeToolStripMenuItem_Click);
             // 
@@ -113,14 +116,23 @@
             // 
             this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
             this.darkThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.darkThemeToolStripMenuItem.Text = "Dark Theme";
             this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.DarkThemeToolStripMenuItem_Click);
+            // 
+            // systemThemeToolStripMenuItem
+            // 
+            this.systemThemeToolStripMenuItem.Name = "systemThemeToolStripMenuItem";
+            this.systemThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.systemThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.systemThemeToolStripMenuItem.Text = "System Theme";
+            this.systemThemeToolStripMenuItem.Click += new System.EventHandler(this.SystemThemeToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
             this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
+            this.polishToolStripMenuItem,
             this.turkishToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
             this.languageToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
@@ -129,13 +141,19 @@
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.englishToolStripMenuItem.Text = "English";
+            // 
+            // polishToolStripMenuItem
+            // 
+            this.polishToolStripMenuItem.Name = "polishToolStripMenuItem";
+            this.polishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.polishToolStripMenuItem.Text = "Polish";
             // 
             // turkishToolStripMenuItem
             // 
             this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
-            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.turkishToolStripMenuItem.Text = "Turkish";
             // 
             // startupToolStripMenuItem
@@ -150,7 +168,7 @@
             // windowedToolStripMenuItem
             // 
             this.windowedToolStripMenuItem.Name = "windowedToolStripMenuItem";
-            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.windowedToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.windowedToolStripMenuItem.Text = "Windowed";
             this.windowedToolStripMenuItem.Click += new System.EventHandler(this.WindowedToolStripMenuItem_Click);
@@ -158,7 +176,7 @@
             // fullScreenToolStripMenuItem
             // 
             this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
-            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
             this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.FullScreenToolStripMenuItem_Click);
@@ -186,7 +204,7 @@
             this.tSWizardToolStripMenuItem.Name = "tSWizardToolStripMenuItem";
             this.tSWizardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.tSWizardToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.tSWizardToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.tSWizardToolStripMenuItem.Text = "TSWizard";
             this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.TSWizardToolStripMenuItem_Click);
             // 
@@ -232,13 +250,13 @@
             this.DataMainTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DataMainTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(87)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Crimson;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(87)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Crimson;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataMainTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataMainTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataMainTable.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -246,7 +264,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(87)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Crimson;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataMainTable.DefaultCellStyle = dataGridViewCellStyle3;
@@ -261,7 +279,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(87)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Crimson;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataMainTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
@@ -295,12 +313,28 @@
             this.FLP_Container.Size = new System.Drawing.Size(220, 119);
             this.FLP_Container.TabIndex = 0;
             // 
+            // Label_NotUSB
+            // 
+            this.Label_NotUSB.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Label_NotUSB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Label_NotUSB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Label_NotUSB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Label_NotUSB.Location = new System.Drawing.Point(5, 432);
+            this.Label_NotUSB.Margin = new System.Windows.Forms.Padding(3);
+            this.Label_NotUSB.Name = "Label_NotUSB";
+            this.Label_NotUSB.Padding = new System.Windows.Forms.Padding(5);
+            this.Label_NotUSB.Size = new System.Drawing.Size(220, 135);
+            this.Label_NotUSB.TabIndex = 1;
+            this.Label_NotUSB.Text = "Herhangi bir USB depolama aygıtı tespit edilemedi.";
+            this.Label_NotUSB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label_NotUSB.Visible = false;
+            // 
             // BtnActiveProtect
             // 
             this.BtnActiveProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnActiveProtect.BackColor = System.Drawing.Color.Crimson;
             this.BtnActiveProtect.BackgroundColor = System.Drawing.Color.Crimson;
-            this.BtnActiveProtect.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnActiveProtect.BorderColor = System.Drawing.Color.Crimson;
             this.BtnActiveProtect.BorderRadius = 10;
             this.BtnActiveProtect.BorderSize = 0;
             this.BtnActiveProtect.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -327,7 +361,7 @@
             this.BtnDisabledProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnDisabledProtect.BackColor = System.Drawing.Color.Crimson;
             this.BtnDisabledProtect.BackgroundColor = System.Drawing.Color.Crimson;
-            this.BtnDisabledProtect.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnDisabledProtect.BorderColor = System.Drawing.Color.Crimson;
             this.BtnDisabledProtect.BorderRadius = 10;
             this.BtnDisabledProtect.BorderSize = 0;
             this.BtnDisabledProtect.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -354,7 +388,7 @@
             this.BtnFormatNTFS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnFormatNTFS.BackColor = System.Drawing.Color.Crimson;
             this.BtnFormatNTFS.BackgroundColor = System.Drawing.Color.Crimson;
-            this.BtnFormatNTFS.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnFormatNTFS.BorderColor = System.Drawing.Color.Crimson;
             this.BtnFormatNTFS.BorderRadius = 10;
             this.BtnFormatNTFS.BorderSize = 0;
             this.BtnFormatNTFS.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -375,22 +409,6 @@
             this.BtnFormatNTFS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnFormatNTFS.UseVisualStyleBackColor = false;
             this.BtnFormatNTFS.Click += new System.EventHandler(this.BtnFormatNTFS_Click);
-            // 
-            // Label_NotUSB
-            // 
-            this.Label_NotUSB.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Label_NotUSB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Label_NotUSB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.Label_NotUSB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Label_NotUSB.Location = new System.Drawing.Point(5, 432);
-            this.Label_NotUSB.Margin = new System.Windows.Forms.Padding(3);
-            this.Label_NotUSB.Name = "Label_NotUSB";
-            this.Label_NotUSB.Padding = new System.Windows.Forms.Padding(5);
-            this.Label_NotUSB.Size = new System.Drawing.Size(220, 135);
-            this.Label_NotUSB.TabIndex = 1;
-            this.Label_NotUSB.Text = "Herhangi bir USB depolama aygıtı tespit edilemedi.";
-            this.Label_NotUSB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Label_NotUSB.Visible = false;
             // 
             // YamiraMain
             // 
@@ -447,6 +465,8 @@
         private System.Windows.Forms.ToolStripMenuItem tSWizardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bmacToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel FLP_Container;
+        private System.Windows.Forms.ToolStripMenuItem systemThemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem polishToolStripMenuItem;
     }
 }
 

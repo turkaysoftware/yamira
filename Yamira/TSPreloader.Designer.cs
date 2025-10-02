@@ -83,7 +83,7 @@
             this.LabelDeveloper.Location = new System.Drawing.Point(15, 9);
             this.LabelDeveloper.Margin = new System.Windows.Forms.Padding(0);
             this.LabelDeveloper.Name = "LabelDeveloper";
-            this.LabelDeveloper.Size = new System.Drawing.Size(294, 35);
+            this.LabelDeveloper.Size = new System.Drawing.Size(326, 35);
             this.LabelDeveloper.TabIndex = 0;
             this.LabelDeveloper.Text = "Türkay Software";
             this.LabelDeveloper.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -96,7 +96,7 @@
             this.LabelSoftware.Location = new System.Drawing.Point(15, 42);
             this.LabelSoftware.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.LabelSoftware.Name = "LabelSoftware";
-            this.LabelSoftware.Size = new System.Drawing.Size(294, 35);
+            this.LabelSoftware.Size = new System.Drawing.Size(326, 35);
             this.LabelSoftware.TabIndex = 1;
             this.LabelSoftware.Text = "Preloader";
             // 
@@ -137,14 +137,14 @@
             // 
             // LabelCopyright
             // 
-            this.LabelCopyright.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LabelCopyright.BackColor = System.Drawing.Color.Transparent;
+            this.LabelCopyright.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.LabelCopyright.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.LabelCopyright.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.LabelCopyright.Location = new System.Drawing.Point(15, 410);
             this.LabelCopyright.Margin = new System.Windows.Forms.Padding(0);
             this.LabelCopyright.Name = "LabelCopyright";
-            this.LabelCopyright.Size = new System.Drawing.Size(294, 25);
+            this.LabelCopyright.Size = new System.Drawing.Size(335, 25);
             this.LabelCopyright.TabIndex = 5;
             this.LabelCopyright.Text = "© Copyright Text.";
             this.LabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,9 +181,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(775, 450);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(775, 450);
             this.Name = "TSPreloader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TSPreloader";

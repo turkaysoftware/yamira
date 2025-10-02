@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -171,7 +172,6 @@ namespace Yamira{
                     try{
                         File.WriteAllLines(_iniFilePath, lines, Encoding.UTF8);
                     }catch (IOException){
-                        // Hata loglanabilir, bu örnekte yazdırıyoruz
                         //Console.Error.WriteLine("INI yazma hatası: " + ex.Message);
                     }
                 }
@@ -181,11 +181,13 @@ namespace Yamira{
         // ======================================================================================================
         public static string ts_lf = @"y_langs";                            // Main Path
         public static string ts_lang_en = ts_lf + @"\English.ini";          // English      | en
+        public static string ts_lang_pl = ts_lf + @"\Polish.ini";           // Polish       | pl
         public static string ts_lang_tr = ts_lf + @"\Turkish.ini";          // Turkish      | tr
         // LANGUAGE MANAGE FUNCTIONS
         // ======================================================================================================
         public static Dictionary<string, string> AllLanguageFiles = new Dictionary<string, string> {
             { "en", ts_lang_en },
+            { "pl", ts_lang_pl },
             { "tr", ts_lang_tr },
         };
         public static string TSPreloaderSetDefaultLanguage(string ui_lang){
@@ -317,6 +319,54 @@ namespace Yamira{
                 return Color.Transparent;
             }
         }
+        // THEME MODE HELPER
+        // ======================================================================================================
+        public static class TSThemeModeHelper{
+            private const int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
+            [DllImport("dwmapi.dll", PreserveSig = true)]
+            private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+            [DllImport("uxtheme.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
+            private static extern int SetWindowTheme(IntPtr hWnd, string pszSubAppName, string pszSubIdList);
+            private static bool _isDarkModeEnabled = false;
+            public static bool IsDarkModeEnabled => _isDarkModeEnabled;
+            public static void SetThemeMode(bool enableTMode){
+                _isDarkModeEnabled = enableTMode;
+                foreach (Form targetForm in Application.OpenForms){
+                    ApplyThemeModeToForm(targetForm, enableTMode);
+                }
+            }
+            public static void InitializeGlobalTheme(){
+                Application.Idle += (s, e) => {
+                    foreach (Form formListener in Application.OpenForms){
+                        if (!formListener.Tag?.Equals("DarkModeApplied") ?? true){
+                            ApplyThemeModeToForm(formListener, _isDarkModeEnabled);
+                            formListener.Tag = "DarkModeApplied";
+                        }
+                    }
+                };
+            }
+            private static void ApplyThemeModeToForm(Form targetForm, bool enableRequire){
+                if (targetForm == null || targetForm.IsDisposed) return;
+                int useDark = enableRequire ? 1 : 0;
+                DwmSetWindowAttribute(targetForm.Handle, DWMWA_USE_IMMERSIVE_DARK_MODE, ref useDark, sizeof(int));
+                ApplyScrollTheme(targetForm, enableRequire ? "DarkMode_Explorer" : "Explorer");
+            }
+            private static void ApplyScrollTheme(Control parentMode, string targetTheme){
+                if (parentMode == null || parentMode.IsDisposed) return;
+                SetWindowTheme(parentMode.Handle, targetTheme, null);
+                foreach (Control childControl in parentMode.Controls){
+                    ApplyScrollTheme(childControl, targetTheme);
+                }
+            }
+        }
+        public static int GetSystemTheme(int theme_mode){
+            if (theme_mode == 2){
+                using (var getSystemThemeKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize")){
+                    theme_mode = (int)(getSystemThemeKey?.GetValue("SystemUsesLightTheme") ?? 1);
+                }
+            }
+            return theme_mode;
+        }
         // DPI SENSITIVE DYNAMIC IMAGE RENDERER
         // ======================================================================================================
         public static void TSImageRenderer(object baseTarget, Image sourceImage, int basePadding, ContentAlignment imageAlign = ContentAlignment.MiddleCenter){
@@ -399,18 +449,10 @@ namespace Yamira{
                 return false;
             }
         }
-        // TITLE BAR SETTINGS DWM API
-        // ======================================================================================================
-        [DllImport("dwmapi.dll", PreserveSig = true)]
-        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
-        public static void TSSetWindowTheme(IntPtr Handle, int theme){
-            if (DwmSetWindowAttribute(Handle, theme == 1 ? 20 : 19, new[] { 1 }, 4) != theme){
-                DwmSetWindowAttribute(Handle, 20, new[] { theme == 1 ? 0 : 1 }, 4);
-            }
-        }
         // DPI AWARE V2
         // ======================================================================================================
         [DllImport("user32.dll")]
         public static extern bool SetProcessDpiAwarenessContext(IntPtr dpiFlag);
+        public static readonly IntPtr DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = new IntPtr(-4);
     }
 }
