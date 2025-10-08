@@ -46,7 +46,7 @@ With these instructions, you can download and use the correct version of Yamira 
 - English
 - Polish
 - Turkish
-- **For translation support: [Translation Guide for Yamira](https://github.com/turkaysoftware/glow/discussions/1)**
+- **For translation support: [Translation Guide for Yamira](https://github.com/turkaysoftware/yamira/discussions/1)**
 
 # Supported Themes
 
