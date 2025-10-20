@@ -36,13 +36,14 @@ namespace Yamira{
             CheckForIllegalCrossThreadCalls = false;
             //
             DataMainTable.RowTemplate.Height = (int)(26 * this.DeviceDpi / 96f);
-            for (int i = 0; i < 6; i++){ DataMainTable.Columns.Add("y_data", "Data"); }
-            DataMainTable.Columns[0].Width = (int)(75 * this.DeviceDpi / 96f);
+            for (int i = 0; i < 7; i++){ DataMainTable.Columns.Add("y_data", "Data"); }
+            DataMainTable.Columns[0].Width = (int)(95 * this.DeviceDpi / 96f);
             DataMainTable.Columns[1].Width = (int)(200 * this.DeviceDpi / 96f);
-            DataMainTable.Columns[2].Width = (int)(90 * this.DeviceDpi / 96f);
+            DataMainTable.Columns[2].Width = (int)(100 * this.DeviceDpi / 96f);
             DataMainTable.Columns[3].Width = (int)(90 * this.DeviceDpi / 96f);
             DataMainTable.Columns[4].Width = (int)(90 * this.DeviceDpi / 96f);
             DataMainTable.Columns[5].Width = (int)(150 * this.DeviceDpi / 96f);
+            DataMainTable.Columns[6].Visible = false;
             foreach (DataGridViewColumn columnPadding in DataMainTable.Columns){
                 int scaledPadding = (int)(3 * this.DeviceDpi / 96f);
                 columnPadding.DefaultCellStyle.Padding = new Padding(scaledPadding, 0, 0, 0);
@@ -169,7 +170,7 @@ namespace Yamira{
                 foreach (DriveInfo drive in allDrives.Where(d => d.DriveType == DriveType.Removable && d.IsReady)){
                     string deviceName = string.IsNullOrEmpty(drive.VolumeLabel) ? software_lang.TSReadLangs("Yamira", "y_default_name") : drive.VolumeLabel;
                     string writePermissionStatus = HasWritePermission(drive.RootDirectory.FullName) ? protect_off : protect_on;
-                    DataMainTable.Rows.Add(drive.Name, deviceName, drive.DriveFormat, TS_FormatSize(drive.TotalSize), TS_FormatSize(drive.AvailableFreeSpace), writePermissionStatus);
+                    DataMainTable.Rows.Add(drive.Name, deviceName, drive.DriveFormat, TS_FormatSize(drive.TotalSize), TS_FormatSize(drive.AvailableFreeSpace), writePermissionStatus, !HasWritePermission(drive.RootDirectory.FullName));
                 }
                 DataMainTable.ClearSelection();
                 Label_NotUSB.Visible = detectedDeviceCount == 0;
@@ -186,9 +187,9 @@ namespace Yamira{
             }catch{ return false; }
         }
         private void VirtualizationModeData(){
-            DataMainTable.Rows.Add(@"F:\", "TS SanDisk Ultra Luxe", "FAT32", "29,7 GB", "14,2 GB", "On");
-            DataMainTable.Rows.Add(@"G:\", "TS Samsung Bar Plus", "NTFS", "59,5 GB", "27,5 GB", "On");
-            DataMainTable.Rows.Add(@"H:\", "TS Samsung Bar Plus", "NTFS", "119,1 GB", "58,6 GB", "Off");
+            DataMainTable.Rows.Add(@"F:\", "TS SanDisk Ultra Luxe", "FAT32", "29,7 GB", "14,2 GB", "On", true);
+            DataMainTable.Rows.Add(@"G:\", "TS Samsung Bar Plus", "NTFS", "59,5 GB", "27,5 GB", "On", true);
+            DataMainTable.Rows.Add(@"H:\", "TS Samsung Bar Plus", "NTFS", "119,1 GB", "58,6 GB", "Off", false);
             DataMainTable.ClearSelection();
         }
         // REFRESH
@@ -550,12 +551,12 @@ namespace Yamira{
                     TSImageRenderer(checkforUpdatesToolStripMenuItem, Properties.Resources.tm_update_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(refreshToolStripMenuItem, Properties.Resources.tm_refresh_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_light, 0, ContentAlignment.MiddleRight);
-                    TSImageRenderer(bmacToolStripMenuItem, Properties.Resources.tm_bmac_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_light, 0, ContentAlignment.MiddleRight);
                     // UI
-                    TSImageRenderer(BtnActiveProtect, Properties.Resources.ct_secure_on_light, 15, ContentAlignment.MiddleLeft);
-                    TSImageRenderer(BtnDisabledProtect, Properties.Resources.ct_secure_off_light, 15, ContentAlignment.MiddleLeft);
-                    TSImageRenderer(BtnFormatNTFS, Properties.Resources.ct_ntfs_format_light, 15, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnActiveProtect, Properties.Resources.ct_secure_on_light, 18, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnDisabledProtect, Properties.Resources.ct_secure_off_light, 18, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnFormatNTFS, Properties.Resources.ct_ntfs_format_light, 18, ContentAlignment.MiddleLeft);
                 }else if (theme == 0){
                     TSImageRenderer(settingsToolStripMenuItem, Properties.Resources.tm_settings_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(themeToolStripMenuItem, Properties.Resources.tm_theme_dark, 0, ContentAlignment.MiddleRight);
@@ -564,12 +565,12 @@ namespace Yamira{
                     TSImageRenderer(checkforUpdatesToolStripMenuItem, Properties.Resources.tm_update_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(refreshToolStripMenuItem, Properties.Resources.tm_refresh_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_dark, 0, ContentAlignment.MiddleRight);
-                    TSImageRenderer(bmacToolStripMenuItem, Properties.Resources.tm_bmac_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_dark, 0, ContentAlignment.MiddleRight);
                     // UI
-                    TSImageRenderer(BtnActiveProtect, Properties.Resources.ct_secure_on_dark, 15, ContentAlignment.MiddleLeft);
-                    TSImageRenderer(BtnDisabledProtect, Properties.Resources.ct_secure_off_dark, 15, ContentAlignment.MiddleLeft);
-                    TSImageRenderer(BtnFormatNTFS, Properties.Resources.ct_ntfs_format_dark, 15, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnActiveProtect, Properties.Resources.ct_secure_on_dark, 18, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnDisabledProtect, Properties.Resources.ct_secure_off_dark, 18, ContentAlignment.MiddleLeft);
+                    TSImageRenderer(BtnFormatNTFS, Properties.Resources.ct_ntfs_format_dark, 18, ContentAlignment.MiddleLeft);
                 }
                 //
                 header_colors[0] = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor2");
@@ -589,7 +590,7 @@ namespace Yamira{
                 BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGColor");
                 Panel_Right.BackColor = TS_ThemeEngine.ColorMode(Convert.ToInt32(theme), "PageContainerBGColor");
                 // ALL BUTTON
-                foreach (Control control in FLP_Container.Controls){
+                foreach (Control control in Panel_Right.Controls){
                     if (control is Button button){
                         button.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBGColor");
                         button.BackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
@@ -674,9 +675,9 @@ namespace Yamira{
                 software_setting_save.TSWriteSettings(ts_settings_container, "LanguageStatus", lang_code);
             }catch (Exception){ }
             // LANG CHANGE NOTIFICATION
-            TSGetLangs software_lang = new TSGetLangs(lang_path);
-            DialogResult lang_change_message = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("LangChange", "lang_change_notification"), "\n\n", "\n\n"));
-            if (lang_change_message == DialogResult.Yes){ DisposeUSBIndicator(); Application.Restart(); }
+            // TSGetLangs software_lang = new TSGetLangs(lang_path);
+            // DialogResult lang_change_message = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("LangChange", "lang_change_notification"), "\n\n", "\n\n"));
+            // if (lang_change_message == DialogResult.Yes){ DisposeUSBIndicator(); Application.Restart(); }
         }
         private void Lang_engine(string lang_type, string lang_code){
             try{
@@ -706,8 +707,8 @@ namespace Yamira{
                 refreshToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_refresh");
                 // TS WIZARD
                 tSWizardToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard");
-                // BMAC
-                bmacToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_bmac");
+                // DONATE
+                donateToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_donate");
                 // ABOUT
                 aboutToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_about");
                 //
@@ -717,6 +718,19 @@ namespace Yamira{
                 DataMainTable.Columns[3].HeaderText = software_lang.TSReadLangs("Yamira", "y_dgv_size");
                 DataMainTable.Columns[4].HeaderText = software_lang.TSReadLangs("Yamira", "y_dgv_freespace");
                 DataMainTable.Columns[5].HeaderText = software_lang.TSReadLangs("Yamira", "y_dgv_protect_mode");
+                //
+                // DGV LAST ROW CHANGER
+                if (DataMainTable.Rows.Count > 0){
+                    string protect_active = software_lang.TSReadLangs("Yamira", "y_protect_status_active");
+                    string protect_disabled = software_lang.TSReadLangs("Yamira", "y_protect_status_disabled");
+                    for (int i = 0; i < DataMainTable.Rows.Count; i++){
+                        var row = DataMainTable.Rows[i];
+                        object cellValue = row.Cells[6].Value;
+                        if (cellValue is bool isActive){
+                            row.Cells[5].Value = isActive ? protect_active : protect_disabled;
+                        }
+                    }
+                }
                 //
                 BtnActiveProtect.Text = " " + software_lang.TSReadLangs("Yamira", "y_btn_protect_active");
                 BtnDisabledProtect.Text = " " + software_lang.TSReadLangs("Yamira", "y_btn_protect_disabled");
@@ -857,11 +871,11 @@ namespace Yamira{
                 TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_error"), "\n\n", ex.Message), string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_title"), Application.ProductName));
             }
         }
-        // BUY ME A COFFEE LINK
+        // DONATE LINK
         // ======================================================================================================
-        private void BmacToolStripMenuItem_Click(object sender, EventArgs e){
+        private void DonateToolStripMenuItem_Click(object sender, EventArgs e){
             try{
-                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_bmac) { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_donate){ UseShellExecute = true });
             }catch (Exception){ }
         }
         // TS WIZARD

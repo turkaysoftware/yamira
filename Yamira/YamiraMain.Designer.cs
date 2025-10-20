@@ -50,13 +50,12 @@
             this.checkforUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tSWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bmacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Panel_BG = new System.Windows.Forms.Panel();
             this.DataMainTable = new System.Windows.Forms.DataGridView();
             this.Panel_Right = new System.Windows.Forms.Panel();
-            this.FLP_Container = new System.Windows.Forms.FlowLayoutPanel();
             this.Label_NotUSB = new System.Windows.Forms.Label();
             this.BtnActiveProtect = new Yamira.TSCustomButton();
             this.BtnDisabledProtect = new Yamira.TSCustomButton();
@@ -65,7 +64,6 @@
             this.Panel_BG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataMainTable)).BeginInit();
             this.Panel_Right.SuspendLayout();
-            this.FLP_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // HeaderMenu
@@ -74,7 +72,7 @@
             this.settingsToolStripMenuItem,
             this.refreshToolStripMenuItem,
             this.tSWizardToolStripMenuItem,
-            this.bmacToolStripMenuItem,
+            this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.HeaderMenu.Location = new System.Drawing.Point(0, 0);
             this.HeaderMenu.Name = "HeaderMenu";
@@ -208,15 +206,15 @@
             this.tSWizardToolStripMenuItem.Text = "TSWizard";
             this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.TSWizardToolStripMenuItem_Click);
             // 
-            // bmacToolStripMenuItem
+            // donateToolStripMenuItem
             // 
-            this.bmacToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bmacToolStripMenuItem.Name = "bmacToolStripMenuItem";
-            this.bmacToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.donateToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.D)));
-            this.bmacToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.bmacToolStripMenuItem.Text = "Bmac";
-            this.bmacToolStripMenuItem.Click += new System.EventHandler(this.BmacToolStripMenuItem_Click);
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.donateToolStripMenuItem.Text = "Donate";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.DonateToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -286,52 +284,43 @@
             this.DataMainTable.RowHeadersVisible = false;
             this.DataMainTable.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataMainTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataMainTable.Size = new System.Drawing.Size(773, 567);
+            this.DataMainTable.Size = new System.Drawing.Size(748, 567);
             this.DataMainTable.TabIndex = 0;
             // 
             // Panel_Right
             // 
             this.Panel_Right.BackColor = System.Drawing.Color.White;
-            this.Panel_Right.Controls.Add(this.FLP_Container);
+            this.Panel_Right.Controls.Add(this.BtnActiveProtect);
+            this.Panel_Right.Controls.Add(this.BtnDisabledProtect);
+            this.Panel_Right.Controls.Add(this.BtnFormatNTFS);
             this.Panel_Right.Controls.Add(this.Label_NotUSB);
             this.Panel_Right.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Panel_Right.Location = new System.Drawing.Point(778, 5);
+            this.Panel_Right.Location = new System.Drawing.Point(753, 5);
             this.Panel_Right.Name = "Panel_Right";
             this.Panel_Right.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.Panel_Right.Size = new System.Drawing.Size(225, 567);
+            this.Panel_Right.Size = new System.Drawing.Size(250, 567);
             this.Panel_Right.TabIndex = 1;
-            // 
-            // FLP_Container
-            // 
-            this.FLP_Container.AutoSize = true;
-            this.FLP_Container.Controls.Add(this.BtnActiveProtect);
-            this.FLP_Container.Controls.Add(this.BtnDisabledProtect);
-            this.FLP_Container.Controls.Add(this.BtnFormatNTFS);
-            this.FLP_Container.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FLP_Container.Location = new System.Drawing.Point(5, 0);
-            this.FLP_Container.Name = "FLP_Container";
-            this.FLP_Container.Size = new System.Drawing.Size(220, 119);
-            this.FLP_Container.TabIndex = 0;
             // 
             // Label_NotUSB
             // 
             this.Label_NotUSB.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Label_NotUSB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Label_NotUSB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Label_NotUSB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Label_NotUSB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Label_NotUSB.Location = new System.Drawing.Point(5, 432);
+            this.Label_NotUSB.Location = new System.Drawing.Point(5, 417);
             this.Label_NotUSB.Margin = new System.Windows.Forms.Padding(3);
             this.Label_NotUSB.Name = "Label_NotUSB";
             this.Label_NotUSB.Padding = new System.Windows.Forms.Padding(5);
-            this.Label_NotUSB.Size = new System.Drawing.Size(220, 135);
-            this.Label_NotUSB.TabIndex = 1;
+            this.Label_NotUSB.Size = new System.Drawing.Size(245, 150);
+            this.Label_NotUSB.TabIndex = 3;
             this.Label_NotUSB.Text = "Herhangi bir USB depolama aygıtı tespit edilemedi.";
             this.Label_NotUSB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Label_NotUSB.Visible = false;
             // 
             // BtnActiveProtect
             // 
-            this.BtnActiveProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnActiveProtect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnActiveProtect.BackColor = System.Drawing.Color.Crimson;
             this.BtnActiveProtect.BackgroundColor = System.Drawing.Color.Crimson;
             this.BtnActiveProtect.BorderColor = System.Drawing.Color.Crimson;
@@ -343,11 +332,11 @@
             this.BtnActiveProtect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnActiveProtect.ForeColor = System.Drawing.Color.White;
             this.BtnActiveProtect.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnActiveProtect.Location = new System.Drawing.Point(0, 0);
+            this.BtnActiveProtect.Location = new System.Drawing.Point(5, 0);
             this.BtnActiveProtect.Margin = new System.Windows.Forms.Padding(0);
             this.BtnActiveProtect.Name = "BtnActiveProtect";
             this.BtnActiveProtect.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BtnActiveProtect.Size = new System.Drawing.Size(220, 35);
+            this.BtnActiveProtect.Size = new System.Drawing.Size(245, 35);
             this.BtnActiveProtect.TabIndex = 0;
             this.BtnActiveProtect.Text = "Korumayı Aç";
             this.BtnActiveProtect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -358,7 +347,8 @@
             // 
             // BtnDisabledProtect
             // 
-            this.BtnDisabledProtect.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnDisabledProtect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnDisabledProtect.BackColor = System.Drawing.Color.Crimson;
             this.BtnDisabledProtect.BackgroundColor = System.Drawing.Color.Crimson;
             this.BtnDisabledProtect.BorderColor = System.Drawing.Color.Crimson;
@@ -370,11 +360,11 @@
             this.BtnDisabledProtect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnDisabledProtect.ForeColor = System.Drawing.Color.White;
             this.BtnDisabledProtect.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnDisabledProtect.Location = new System.Drawing.Point(0, 42);
+            this.BtnDisabledProtect.Location = new System.Drawing.Point(5, 42);
             this.BtnDisabledProtect.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.BtnDisabledProtect.Name = "BtnDisabledProtect";
             this.BtnDisabledProtect.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BtnDisabledProtect.Size = new System.Drawing.Size(220, 35);
+            this.BtnDisabledProtect.Size = new System.Drawing.Size(245, 35);
             this.BtnDisabledProtect.TabIndex = 1;
             this.BtnDisabledProtect.Text = "Korumayı Kaldır";
             this.BtnDisabledProtect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -385,7 +375,8 @@
             // 
             // BtnFormatNTFS
             // 
-            this.BtnFormatNTFS.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnFormatNTFS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnFormatNTFS.BackColor = System.Drawing.Color.Crimson;
             this.BtnFormatNTFS.BackgroundColor = System.Drawing.Color.Crimson;
             this.BtnFormatNTFS.BorderColor = System.Drawing.Color.Crimson;
@@ -397,11 +388,11 @@
             this.BtnFormatNTFS.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnFormatNTFS.ForeColor = System.Drawing.Color.White;
             this.BtnFormatNTFS.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnFormatNTFS.Location = new System.Drawing.Point(0, 84);
+            this.BtnFormatNTFS.Location = new System.Drawing.Point(5, 84);
             this.BtnFormatNTFS.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.BtnFormatNTFS.Name = "BtnFormatNTFS";
             this.BtnFormatNTFS.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BtnFormatNTFS.Size = new System.Drawing.Size(220, 35);
+            this.BtnFormatNTFS.Size = new System.Drawing.Size(245, 35);
             this.BtnFormatNTFS.TabIndex = 2;
             this.BtnFormatNTFS.Text = "NTFS Formatla";
             this.BtnFormatNTFS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -431,8 +422,6 @@
             this.Panel_BG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataMainTable)).EndInit();
             this.Panel_Right.ResumeLayout(false);
-            this.Panel_Right.PerformLayout();
-            this.FLP_Container.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,8 +452,7 @@
         private System.Windows.Forms.Label Label_NotUSB;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tSWizardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bmacToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel FLP_Container;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem systemThemeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem polishToolStripMenuItem;
     }
