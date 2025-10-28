@@ -13,8 +13,6 @@ Programmed with C# and .NET Framework only. No external libraries, no dependenci
 
 <img width="1010" height="633" alt="Yamira UI - Dark" src="https://github.com/user-attachments/assets/d7ff3b95-bb50-4e82-9313-8db97f2eb6f8" />
 
-<img width="1010" height="633" alt="Yamira UI - Light" src="https://github.com/user-attachments/assets/23b986a8-4594-4d32-9b74-9868f5ddfdfd" />
-
 # Download Yamira
 
 Download: [Yamira Latest Version](https://github.com/turkaysoftware/yamira/releases/latest)
@@ -39,27 +37,13 @@ After downloading the Yamira application, you will find two options: **Yamira_x6
 
 With these instructions, you can download and use the correct version of Yamira for your device. If you need further assistance, please feel free to reach out!
 
-# Supported Languages
+# Advanced Features
+- **Multi-Architecture Support:** Fully compatible with x64-x86 and ARM processors.
+- **Multi-Language System:** Fully supports 14 or more languages. **Supported Languages:** _Arabic, Chinese, English, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for Astel](https://github.com/turkaysoftware/astel/discussions/3)**
+- Advanced interface features such as Light / Dark / System Theme.
+- [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
 
-- English
-- Polish
-- Turkish
-- **For translation support: [Translation Guide for Yamira](https://github.com/turkaysoftware/yamira/discussions/1)**
-
-# Supported Themes
-
-- Light Theme
-- Dark Theme
-
-# Supported Operating Systems
-
-- Windows 11 x64
-- Windows 10 x64
-
-# Supported Architectures
-
-- 64 Bit (x64)
-- ARM64 (ARM CPU)
+<img width="396" height="336" alt="Yamira - Advanced Features" src="https://github.com/user-attachments/assets/95e9e96c-bef4-4f5d-8dad-f5ec3a527488" />
 
 # System Requirements
 
