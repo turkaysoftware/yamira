@@ -11,7 +11,7 @@ Programmed with C# and .NET Framework only. No external libraries, no dependenci
 
 [Click here](https://www.turkaysoftware.com/yamira) for full specifications.
 
-<img width="1010" height="633" alt="Yamira UI" src="https://github.com/user-attachments/assets/a7044dfa-e372-4809-8daa-46a453ba063a" />
+![Yamira UI](https://github.com/user-attachments/assets/00ebc89c-7ac1-4bff-9948-b47690679e89)
 
 # Download Yamira
 
