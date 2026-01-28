@@ -1,6 +1,6 @@
 ﻿// ======================================================================================================
 // Yamira - USB Drive Protection Software
-// © Copyright 2024-2025, Eray Türkay.
+// © Copyright 2024-2026, Eray Türkay.
 // Project Type: Open Source
 // License: MIT License
 // Website: https://www.turkaysoftware.com/yamira
@@ -57,6 +57,7 @@ namespace Yamira{
             arabicToolStripMenuItem.Tag = "ar";
             chineseToolStripMenuItem.Tag = "zh";
             englishToolStripMenuItem.Tag = "en";
+            dutchToolStripMenuItem.Tag = "nl";
             frenchToolStripMenuItem.Tag = "fr";
             germanToolStripMenuItem.Tag = "de";
             hindiToolStripMenuItem.Tag = "hi";
@@ -73,6 +74,7 @@ namespace Yamira{
             arabicToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             chineseToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             englishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
+            dutchToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             frenchToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             germanToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             hindiToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
@@ -96,7 +98,6 @@ namespace Yamira{
         // LOCAL VARIABLES
         // ======================================================================================================
         readonly string ts_wizard_name = "TS Wizard";
-        readonly bool virtualization_mode = false;
         // USB STATUS INDICATOR
         // ======================================================================================================
         private ManagementEventWatcher TSUSBIndicator = null;
@@ -113,14 +114,15 @@ namespace Yamira{
                 Graphics g = e.Graphics;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 float dpiScale = g.DpiX / 96f;
-                // TICK BG
-                // using (SolidBrush bgBrush = new SolidBrush(header_colors[0])){ RectangleF bgRect = new RectangleF( e.ImageRectangle.Left, e.ImageRectangle.Top, e.ImageRectangle.Width,e.ImageRectangle.Height); g.FillRectangle(bgBrush, bgRect); }
-                using (Pen anti_alias_pen = new Pen(header_colors[2], 3 * dpiScale)){
-                    Rectangle rect = e.ImageRectangle;
-                    Point p1 = new Point((int)(rect.Left + 3 * dpiScale), (int)(rect.Top + rect.Height / 2));
-                    Point p2 = new Point((int)(rect.Left + 7 * dpiScale), (int)(rect.Bottom - 4 * dpiScale));
-                    Point p3 = new Point((int)(rect.Right - 2 * dpiScale), (int)(rect.Top + 3 * dpiScale));
-                    g.DrawLines(anti_alias_pen, new Point[] { p1, p2, p3 });
+                Rectangle rect = e.ImageRectangle;
+                using (Pen anti_alias_pen = new Pen(header_colors[2], 2.2f * dpiScale)){
+                    anti_alias_pen.StartCap = LineCap.Round;
+                    anti_alias_pen.EndCap = LineCap.Round;
+                    anti_alias_pen.LineJoin = LineJoin.Round;
+                    PointF p1 = new PointF(rect.Left + rect.Width * 0.18f, rect.Top + rect.Height * 0.52f);
+                    PointF p2 = new PointF(rect.Left + rect.Width * 0.38f, rect.Top + rect.Height * 0.72f);
+                    PointF p3 = new PointF(rect.Left + rect.Width * 0.78f, rect.Top + rect.Height * 0.28f);
+                    g.DrawLines(anti_alias_pen, new[] { p1, p2, p3 });
                 }
             }
         }
@@ -166,6 +168,7 @@ namespace Yamira{
                 { "ar", (ts_lang_ar, arabicToolStripMenuItem, File.Exists(ts_lang_ar)) },
                 { "zh", (ts_lang_zh, chineseToolStripMenuItem, File.Exists(ts_lang_zh)) },
                 { "en", (ts_lang_en, englishToolStripMenuItem, File.Exists(ts_lang_en)) },
+                { "nl", (ts_lang_nl, dutchToolStripMenuItem, File.Exists(ts_lang_nl)) },
                 { "fr", (ts_lang_fr, frenchToolStripMenuItem, File.Exists(ts_lang_fr)) },
                 { "de", (ts_lang_de, germanToolStripMenuItem, File.Exists(ts_lang_de)) },
                 { "hi", (ts_lang_hi, hindiToolStripMenuItem, File.Exists(ts_lang_hi)) },
@@ -238,7 +241,7 @@ namespace Yamira{
             HeaderMenu.Cursor = Cursors.Hand;
             //
             RunSoftwareEngine();
-            if (!virtualization_mode){
+            if (!Program.virtualization_mode){
                 LoadUSBDrives();
             }else{
                 VirtualizationModeData();
@@ -583,7 +586,7 @@ namespace Yamira{
                     TSImageRenderer(themeToolStripMenuItem, Properties.Resources.tm_theme_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(languageToolStripMenuItem, Properties.Resources.tm_language_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(startupToolStripMenuItem, Properties.Resources.tm_startup_light, 0, ContentAlignment.MiddleRight);
-                    TSImageRenderer(checkforUpdatesToolStripMenuItem, Properties.Resources.tm_update_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(checkForUpdatesToolStripMenuItem, Properties.Resources.tm_update_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(refreshToolStripMenuItem, Properties.Resources.tm_refresh_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_light, 0, ContentAlignment.MiddleRight);
@@ -597,7 +600,7 @@ namespace Yamira{
                     TSImageRenderer(themeToolStripMenuItem, Properties.Resources.tm_theme_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(languageToolStripMenuItem, Properties.Resources.tm_language_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(startupToolStripMenuItem, Properties.Resources.tm_startup_dark, 0, ContentAlignment.MiddleRight);
-                    TSImageRenderer(checkforUpdatesToolStripMenuItem, Properties.Resources.tm_update_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(checkForUpdatesToolStripMenuItem, Properties.Resources.tm_update_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(refreshToolStripMenuItem, Properties.Resources.tm_refresh_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_dark, 0, ContentAlignment.MiddleRight);
@@ -732,6 +735,7 @@ namespace Yamira{
                 arabicToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_ar");
                 chineseToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_zh");
                 englishToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_en");
+                dutchToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_nl");
                 frenchToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_fr");
                 germanToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_de");
                 hindiToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_hi");
@@ -748,7 +752,7 @@ namespace Yamira{
                 windowedToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderViewMode", "header_view_mode_windowed");
                 fullScreenToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderViewMode", "header_view_mode_full_screen");
                 // UPDATE CHECK
-                checkforUpdatesToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_update");
+                checkForUpdatesToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_update");
                 // REFRESH
                 refreshToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_refresh");
                 // TS WIZARD
@@ -861,12 +865,13 @@ namespace Yamira{
         }
         // UPDATE CHECK ENGINE
         // ======================================================================================================
-        private void CheckforUpdatesToolStripMenuItem_Click(object sender, EventArgs e){
-            Software_update_check(1);
+        private void CheckForUpdatesToolStripMenuItem_Click(object sender, EventArgs e){
+           Task.Run(() => Software_update_check(1));
         }
         public void Software_update_check(int _check_update_ui){
             try{
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
+                SetUpdateMenuEnabled(false);
                 if (!IsNetworkCheck()){
                     if (_check_update_ui == 1){
                         TS_MessageBoxEngine.TS_MessageBox(this, 2, string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_not_connection"), "\n\n"), string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_title"), Application.ProductName));
@@ -905,6 +910,15 @@ namespace Yamira{
             }catch (Exception ex){
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
                 TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_error"), "\n\n", ex.Message), string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_title"), Application.ProductName));
+            }finally{
+                SetUpdateMenuEnabled(true);
+            }
+        }
+        private void SetUpdateMenuEnabled(bool enabled){
+            if (InvokeRequired){
+                BeginInvoke(new Action(() => checkForUpdatesToolStripMenuItem.Enabled = enabled));
+            }else{
+                checkForUpdatesToolStripMenuItem.Enabled = enabled;
             }
         }
         // DONATE LINK

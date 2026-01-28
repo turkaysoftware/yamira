@@ -32,15 +32,16 @@ namespace Yamira{
         }
         // LOAD
         // ======================================================================================================
-        private void TSPreloader_Load(object sender, EventArgs e){
-            Software_preloader();
+        private async void TSPreloader_Load(object sender, EventArgs e){
+            if (!Software_preloader()){
+                return;
+            }
             Software_set_launch();
-            //
             if (Program.ts_pre_debug_mode == true){
                 LabelLoader.Text = "Loading - 50%";
                 PanelLoaderFE.Width = (int)(PanelLoaderBG.Width * 0.5);
             }else{
-                Task.Run(() => Load_animation(), Program.TS_TokenEngine.Token);
+                await Load_animation();
             }
         }
         // SOFTWARE PRELOADER
@@ -50,25 +51,26 @@ namespace Yamira{
         |   ------------------------------------------------------------------------------------------
         |   0 = Dark Theme    |  Moved to             |  0 = Windowed           |  0 = Off
         |   1 = Light Theme   |  TSModules.cs         |  1 = Full Screen        |  1 = On
+        |   2 = System Theme
         |   ------------------------------------------------------------------------------------------
         */
-        private void Software_preloader(){
+        private bool Software_preloader(){
             try{
                 // CHECK LANGS FOLDER
                 if (!Directory.Exists(ts_lf)){
                     Software_prelaoder_alert(0);
-                    return;
+                    return false;
                 }
                 // CHECK LANGS FILE
                 var lang_files = Directory.GetFiles(ts_lf, "*.ini");
                 if (lang_files.Length == 0){
                     Software_prelaoder_alert(1);
-                    return;
+                    return false;
                 }
                 // CHECK ENGLISH LANG FILE
                 if (!File.Exists(ts_lang_en)){
                     Software_prelaoder_alert(2);
-                    return;
+                    return false;
                 }
                 // CHECK SETTINGS FILE
                 if (!File.Exists(ts_sf)){
@@ -84,17 +86,22 @@ namespace Yamira{
                     }catch (Exception ex){
                         // ERROR LOG
                         LogError(ex);
+                        return false;
                     }
                 }
+                return true;
             }catch (IOException ioEx){
                 // IO ERROR LOG
                 LogError(ioEx);
+                return false;
             }catch (UnauthorizedAccessException uaEx){
                 // ACCESS ERROR LOG
                 LogError(uaEx);
+                return false;
             }catch (Exception ex){
                 // OTHER ERROR LOG
                 LogError(ex);
+                return false;
             }
         }
         // PRELOAD ALERT
@@ -185,9 +192,7 @@ namespace Yamira{
             int progress_interval = 0;
             int progress_increment = 5;
             int progress_delay = 10;
-            //
             TSProgressExecutive(0);
-            //
             while (progress_interval < 100){
                 TSProgressExecutive(progress_interval);
                 if (progress_interval + progress_increment >= 100){
@@ -196,14 +201,13 @@ namespace Yamira{
                     break;
                 }
                 progress_interval += progress_increment;
-                await Task.Delay(progress_delay);
+                await Task.Delay(progress_delay, Program.TS_TokenEngine.Token);
             }
-            //
-            BeginInvoke(new Action(() => {
-                YamiraMain yamira = new YamiraMain();
-                yamira.Show();
-                Hide();
-            }));
+            if (IsDisposed || !IsHandleCreated)
+                return;
+            var yamira = new YamiraMain();
+            yamira.Show();
+            Hide();
         }
     }
 }
