@@ -36,8 +36,13 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 * **Malware Defense:** Prevents common USB-borne viruses from tampering with your file structure.
 * **File Visibility Guard:** Actively counteracts malware that attempts to hide or delete user data.
 * **Multi-Architecture Support:** Native compatibility for x64, x86, and ARM64 processor architectures.
-* **TS Wizard Integration:** Seamlessly works with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
-* **Localization Support:** Community-driven translation system via the [Translation Guide](https://github.com/turkaysoftware/yamira/discussions/1).
+
+---
+
+## 🛠️ Automatic Updates and Translation Support
+
+* **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
+* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/yamira/discussions/1).
 
 ---
 
