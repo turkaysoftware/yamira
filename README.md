@@ -1,9 +1,10 @@
 # 🛡️ Yamira | Advanced USB Drive Protection Software
 
-![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/yamira?style=for-the-badge&color=gold)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/yamira?style=for-the-badge&color=blue)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/yamira?style=for-the-badge)
-![Platform](https://img.shields.io/badge/platform-Windows-0078D4?style=for-the-badge&logo=windows)
+![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/yamira/total?style=for-the-badge&color=DF313F)
+![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/yamira?style=for-the-badge&color=167C33)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/yamira?style=for-the-badge&color=9A194C)
+![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
+![GitHub license](https://img.shields.io/github/license/turkaysoftware/yamira?style=for-the-badge&color=17796E)
 
 **Yamira** is a specialized **USB drive protection software** developed by **Eray Türkay**. It is designed to safeguard your portable storage devices against malware, specifically preventing unauthorized hiding or deletion of your personal files the moment a USB drive is connected. Yamira acts as a proactive shield, ensuring your data remains visible and secure across different environments.
 
@@ -12,7 +13,7 @@
 ### ☕ Support the Project
 Yamira is free and will always be. If you find it useful, consider supporting the development!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
 [Official Website](https://www.turkaysoftware.com/yamira) | [Report a Bug](https://github.com/turkaysoftware/yamira/issues)
 
