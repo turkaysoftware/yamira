@@ -193,6 +193,34 @@ namespace Yamira{
                     }catch (IOException){ }
                 }
             }
+            public void TSDeleteSetting(string sectionName, string keyName){
+                lock (_fileLock){
+                    if (!File.Exists(_iniFilePath)) return;
+                    List<string> lines = File.ReadAllLines(_iniFilePath, Encoding.UTF8).ToList();
+                    bool isInSection = string.IsNullOrEmpty(sectionName);
+                    for (int i = 0; i < lines.Count; i++){
+                        string line = lines[i].Trim();
+                        if (line.Length == 0 || line.StartsWith(";")) continue;
+                        if (line.StartsWith("[") && line.EndsWith("]")){
+                            isInSection = line.Equals("[" + sectionName + "]", StringComparison.OrdinalIgnoreCase);
+                            continue;
+                        }
+                        if (isInSection){
+                            int eqIndex = line.IndexOf('=');
+                            if (eqIndex > 0){
+                                string currentKey = line.Substring(0, eqIndex).Trim();
+                                if (currentKey.Equals(keyName, StringComparison.OrdinalIgnoreCase)){
+                                    lines.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    try{
+                        File.WriteAllLines(_iniFilePath, lines, Encoding.UTF8);
+                    }catch (IOException) { }
+                }
+            }
         }
         // READ LANG PATHS
         // ======================================================================================================
