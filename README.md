@@ -49,7 +49,7 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ## 📸 Interface Preview
 
-![Yamira UI](https://github.com/user-attachments/assets/2613b258-3a60-49a3-a532-472adfa3a132)
+<img width="1010" height="633" alt="Yamira UI" src="https://github.com/user-attachments/assets/4ccca0eb-4bab-4951-903c-ae9ce8400aa3" />
 
 ---
 
