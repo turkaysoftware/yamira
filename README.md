@@ -1,4 +1,4 @@
-# 🛡️ Yamira | Advanced USB Drive Protection Software
+# 🛡️ Yamira - Advanced USB Drive Protection Software
 
 ![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/yamira/total?style=for-the-badge&color=DF313F)
 ![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/yamira?style=for-the-badge&color=167C33)
