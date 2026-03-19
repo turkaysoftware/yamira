@@ -1,17 +1,16 @@
-# 🛡️ Yamira - Advanced USB Drive Protection Software
+# Yamira - Advanced USB Drive Protection Software
 
 ![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/yamira/total?style=for-the-badge&color=DF313F)
 ![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/yamira?style=for-the-badge&color=167C33)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/yamira?style=for-the-badge&color=9A194C)
 ![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/yamira?style=for-the-badge&color=17796E)
 
 **Yamira** is a specialized **USB drive protection software** developed by **Eray Türkay**. It is designed to safeguard your portable storage devices against malware, specifically preventing unauthorized hiding or deletion of your personal files the moment a USB drive is connected. Yamira acts as a proactive shield, ensuring your data remains visible and secure across different environments.
 
 ---
 
-### ☕ Support the Project
-Yamira is free and will always be. If you find it useful, consider supporting the development!
+### Donate
+You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
@@ -19,18 +18,18 @@ Yamira is free and will always be. If you find it useful, consider supporting th
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* 🛡️ **Instant Protection:** Automatically secures USB devices against malware upon connection.
-* 🚀 **Pure Performance:** Developed exclusively in **C# and .NET Framework** with **zero external libraries** or dependencies.
-* 🌓 **Modern UI:** Clean and intuitive interface with Light, Dark, and System theme support.
-* 🌍 **Multilingual:** Fully supports 15+ languages including Arabic, Chinese, English, Turkish, and more.
-* 📦 **Portable:** No installation required. Simply extract and run to protect your drives on the go.
-* 🆓 **Truly Free:** Professional-grade USB security provided at no cost.
+* **Instant Protection:** Automatically secures USB devices against malware upon connection.
+* **Pure Performance:** Developed exclusively in **C# and .NET Framework** with **zero external libraries** or dependencies.
+* **Modern UI:** Clean and intuitive interface with Light, Dark, and System theme support.
+* **Multilingual:** Fully supports 15+ languages including Arabic, Chinese, English, Turkish, and more.
+* **Portable:** No installation required. Simply extract and run to protect your drives on the go.
+* **Truly Free:** Professional-grade USB security provided at no cost.
 
 ---
 
-## 🛠️ Advanced Capabilities
+## Advanced Capabilities
 
 Yamira offers a robust set of tools to maintain the integrity of your USB storage:
 
@@ -40,20 +39,20 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ---
 
-## 🛠️ Automatic Updates and Translation Support
+## Automatic Updates and Translation Support
 
 * **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
 * **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/yamira/discussions/1).
 
 ---
 
-## 📸 Interface Preview
+## Interface Preview
 
 <img width="1010" height="633" alt="Yamira UI" src="https://github.com/user-attachments/assets/c329d406-9841-44de-a506-b3678b23d1a9" />
 
 ---
 
-## 💻 System Requirements
+## System Requirements
 
 | Feature | Minimum Requirements | Recommended Requirements |
 | :--- | :--- | :--- |
@@ -63,7 +62,7 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  Navigate to the **[Releases](https://github.com/turkaysoftware/yamira/releases/latest)** page.
 2.  Download the latest ZIP file.
@@ -74,7 +73,7 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ---
 
-## 🛡️ Security
+## Security
 
 * **Zero Data Export Policy:** Your privacy is our priority; no data leaves your machine.
 * **No Dependencies:** Developed entirely from scratch using its own source code, there are no risks from security vulnerabilities in third-party libraries.
@@ -82,6 +81,6 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ---
 
-## 📄 License
+## License
 
 This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/yamira?tab=MIT-1-ov-file).
