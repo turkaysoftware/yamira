@@ -1,9 +1,9 @@
 # Yamira - Advanced USB Drive Protection Software
 
-[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/yamira/total?style=flat&color=1a893c)](https://github.com/turkaysoftware/yamira/releases)
-[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/yamira?style=flat&color=0062cc)](https://github.com/turkaysoftware/yamira/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/yamira?style=flat&color=5a32a3)](https://github.com/turkaysoftware/yamira/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat)](https://github.com/turkaysoftware/yamira)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/yamira/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoftware/yamira/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/yamira?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoftware/yamira/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/yamira?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoftware/yamira/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoftware/yamira)
 
 **Yamira** is a specialized **USB drive protection software** developed by **Eray Türkay**. It is designed to safeguard your portable storage devices against malware, specifically preventing unauthorized hiding or deletion of your personal files the moment a USB drive is connected. Yamira acts as a proactive shield, ensuring your data remains visible and secure across different environments.
 
