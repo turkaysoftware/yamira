@@ -54,7 +54,7 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 | Feature | Minimum Requirements | Recommended Requirements |
 | :--- | :--- | :--- |
-| **OS** | Windows 10 x64 | Windows 10 22H2 x64 |
+| **OS** | Windows 10 20H2 x64 | Windows 10 22H2 x64 |
 | **RAM** | 50 MB Free RAM | 75 MB Free RAM |
 | **.NET** | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
 
