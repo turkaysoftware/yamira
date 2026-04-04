@@ -8,7 +8,6 @@
 // GitHub: https://github.com/turkaysoftware/yamira
 // ======================================================================================================
 
-using Microsoft.VisualBasic;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -24,7 +23,6 @@ using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 // TS MODULES
@@ -370,39 +368,14 @@ namespace Yamira{
                 TS_MessageBoxEngine.TS_MessageBox(this, 2, software_lang.TSReadLangs("Yamira", "y_process_start_info"));
                 return;
             }
-            //
             string rootPath = DataMainTable.SelectedRows[0].Cells[0].Value.ToString().Trim();
-            //
             if (Directory.Exists(rootPath)){
                 DriveInfo driveInfo = new DriveInfo(rootPath);
-                // Check file system
                 if (!string.Equals(driveInfo.DriveFormat, "NTFS", StringComparison.OrdinalIgnoreCase)){
                     DialogResult result = TS_MessageBoxEngine.TS_MessageBox(this, 6, string.Format(software_lang.TSReadLangs("Yamira", "y_ntfs_warning"), "\n\n", "\n\n"));
                     if (result == DialogResult.Yes){
-                        try{
-                            string userInput = Interaction.InputBox(
-                                software_lang.TSReadLangs("Yamira", "y_ntfs_info"),
-                                software_lang.TSReadLangs("Yamira", "y_ntfs_new_usb_name"),
-                                software_lang.TSReadLangs("Yamira", "y_default_name"),
-                                -1,
-                                -1
-                            );
-                            if (!string.IsNullOrEmpty(userInput)){
-                                string pattern = @"[^\w\s]";
-                                bool containsSpecialCharacters = Regex.IsMatch(userInput, pattern);
-                                //
-                                if (!containsSpecialCharacters) {
-                                    // Formatting process
-                                    Text = TS_VersionEngine.TS_SofwareVersion(0) + " - " + software_lang.TSReadLangs("Yamira", "y_ntfs_format_title");
-                                    Task formatNtfs = Task.Run(() => FormatDrive(driveInfo.RootDirectory.ToString(), TSFormatSafeLabel(userInput)));
-                                }
-                                else{
-                                    TS_MessageBoxEngine.TS_MessageBox(this, 2, software_lang.TSReadLangs("Yamira", "y_ntfs_info"));
-                                }
-                            }else{
-                                TS_MessageBoxEngine.TS_MessageBox(this, 2, software_lang.TSReadLangs("Yamira", "y_ntfs_new_usb_name_null"));
-                            }
-                        }catch (Exception){ }
+                        this.Text = TS_VersionEngine.TS_SofwareVersion(0) + " - " + software_lang.TSReadLangs("Yamira", "y_ntfs_format_title");
+                        Task.Run(() => FormatDrive(driveInfo.RootDirectory.ToString(), "TS_USB"));
                     }
                 }else{
                     TS_MessageBoxEngine.TS_MessageBox(this, 1, software_lang.TSReadLangs("Yamira", "y_not_ntfs_file_system_not"));

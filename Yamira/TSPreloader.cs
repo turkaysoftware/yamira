@@ -19,8 +19,6 @@ namespace Yamira{
         public TSPreloader(){
             InitializeComponent();
             //
-            Program.TS_TokenEngine = new CancellationTokenSource();
-            //
             LabelDeveloper.Text = Application.CompanyName;
             LabelSoftware.Text = Application.ProductName;
             LabelVersion.Text = TS_VersionEngine.TS_SofwareVersion(1);
@@ -45,6 +43,7 @@ namespace Yamira{
         // ======================================================================================================
         private async void TSPreloader_Load(object sender, EventArgs e){
             if (!SoftwarePreloader()){
+                Application.Exit();
                 return;
             }
             SoftwareSetLaunch();
@@ -101,10 +100,11 @@ namespace Yamira{
             }
             string uiLang = CultureInfo.InstalledUICulture.TwoLetterISOLanguageName.Trim();
             TSSettingsModule settings = new TSSettingsModule(ts_sf);
-            foreach (var (key, valueFactory) in GetDefaultSettings(uiLang)){
+            var defaults = GetDefaultSettings(uiLang).ToList();
+            foreach (var (key, valueFactory) in defaults){
                 EnsureSettingKey(settings, ts_settings_container, key, valueFactory());
             }
-            settings.TSOrderSectionKeys(ts_settings_container, GetDefaultSettings(uiLang).Select(x => x.Key));
+            settings.TSOrderSectionKeys(ts_settings_container, defaults.Select(x => x.Key));
         }
         // Make sure the adjustment key is present
         // ======================================================================================================
@@ -207,7 +207,9 @@ namespace Yamira{
                         TSSettingsModule software_setting_save = new TSSettingsModule(ts_sf);
                         software_setting_save.TSWriteSettings(ts_settings_container, "LanguageStatus", lang_mode);
                     }
-                }catch (Exception){ }
+                }catch (Exception ex){
+                    LogError(ex);
+                }
                 //
                 TSGetLangs software_lang = new TSGetLangs(lang_file);
                 Text = string.Format(software_lang.TSReadLangs("TSPreloader", "tsbt_title"), Application.CompanyName);
@@ -233,20 +235,18 @@ namespace Yamira{
                 int progress_delay = 10;
                 TSProgressExecutive(0);
                 while (progress_interval < 100){
-                    TSProgressExecutive(progress_interval);
-                    if (progress_interval + progress_increment >= 100){
-                        progress_interval = 100;
-                        TSProgressExecutive(progress_interval);
-                        break;
-                    }
                     progress_interval += progress_increment;
-                    await Task.Delay(progress_delay, Program.TS_TokenEngine.Token);
+                    if (progress_interval > 100)
+                        progress_interval = 100;
+                    TSProgressExecutive(progress_interval);
+                    await Task.Delay(progress_delay);
                 }
             }catch (OperationCanceledException){
                 return;
             }
-            if (IsDisposed || !IsHandleCreated)
+            if (IsDisposed || !IsHandleCreated){
                 return;
+            }
             var yamira = new YamiraMain();
             yamira.Show();
             Hide();
