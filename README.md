@@ -1,9 +1,9 @@
 # Yamira - Advanced USB Drive Protection Software
 
-[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/yamira/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoftware/yamira/releases)
-[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/yamira?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoftware/yamira/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/yamira?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoftware/yamira/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoftware/yamira)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoft/yamira/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoft/yamira/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoft/yamira?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoft/yamira/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoft/yamira?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoft/yamira/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoft/yamira)
 
 **Yamira** is a specialized **USB drive protection software** developed by **Eray Türkay**. It is designed to safeguard your portable storage devices against malware, specifically preventing unauthorized hiding or deletion of your personal files the moment a USB drive is connected. Yamira acts as a proactive shield, ensuring your data remains visible and secure across different environments.
 
@@ -12,7 +12,7 @@
 ### Donate
 You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-0a6628?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/turkaysoftware)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-0a6628?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/turkaysoft)
 
 ---
 
@@ -44,7 +44,7 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ## Translation Support
 
-* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/yamira/discussions/1).
+* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoft/yamira/discussions/1).
 
 ---
 
@@ -61,7 +61,7 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ## Getting Started
 
-1.  Navigate to the **[Releases](https://github.com/turkaysoftware/yamira/releases/latest)** page.
+1.  Navigate to the **[Releases](https://github.com/turkaysoft/yamira/releases/latest)** page.
 2.  Download the latest ZIP file.
 3.  **Extract all files from the ZIP** (Important: Application requires all folder contents to run correctly).
 4.  Launch the executable corresponding to your architecture:
@@ -80,4 +80,4 @@ Yamira offers a robust set of tools to maintain the integrity of your USB storag
 
 ## License
 
-This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/yamira?tab=MIT-1-ov-file).
+This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoft/yamira?tab=MIT-1-ov-file).
